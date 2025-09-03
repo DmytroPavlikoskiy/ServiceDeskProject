@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServiceDesk Chat</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/chat.css') }}">
+</head>
+<body>
+  <div class="chat-container">
+    
+    <!-- Ліва панель -->
+    <div class="contacts">
+      <!-- Логотип -->
+      <div class="logo">
+        <a href="{{ url_for('home') }}">
+          <img src="{{ url_for('static', path='/images/logo.png') }}">
+        </a>
+      </div>
+
+      <div class="contacts-header">Мої майстри</div>
+      <div class="contact-list">
+        <div class="contact" data-user="ivan">
+          Іван Петров <span class="badge" id="badge-ivan">0</span>
+        </div>
+        <div class="contact" data-user="oleksandr">
+          Олександр Коваленко <span class="badge" id="badge-oleksandr">0</span>
+        </div>
+        <div class="contact" data-user="maria">
+          Марія Сидоренко <span class="badge" id="badge-maria">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Вікно чату -->
+    <div class="chat-window">
+      <div class="chat-header" id="chatHeader">Чат з майстром</div>
+      <div class="messages" id="messages">
+        <div class="message master">Доброго дня! Чим можу допомогти?</div>
+        <div class="message client">Привіт, в мене проблема з ноутбуком, він не вмикається.</div>
+        <div class="message master">Зрозумів. Ви пробували підключити зарядку?</div>
+      </div>
+      <form class="chat-input" id="chatForm">
+        <input type="text" id="messageInput" placeholder="Напишіть повідомлення..." required>
+        <button type="submit"><i class="fa fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', path='/js/chat.js') }}"></script>
+</body>
+</html>

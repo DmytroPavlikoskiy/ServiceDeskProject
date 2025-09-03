@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-pap9G3FwFkVJQXZ3dEL6S2GpD2PiX+9YV+eGhGvIT7b3g6/4gqciFVnQcZCjf4sJbJtB/Hn0Pv4CqGxC4SZo5g=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!-- Font Awesome Free 6 -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/SiSuStyle.css') }}">
+    <title>ServiceDesk Sign in/Sign up</title>
+</head>
+<body>
+
+    <!-- <div class="container_reg_log_control">
+        
+    </div> -->
+
+    <div class="wrapper">
+        <div class="login is-active">
+          <div class="form-element">
+            <span><i class="fa fa-envelope"></i></span>
+            <input type="email" placeholder="Your Email Address"/>
+          </div>
+          <div class="form-element">
+            <span><i class="fa fa-lock"></i></span><input type="password" placeholder=" Password"/>
+          </div>
+          <button class="btn-login">login</button>
+        </div>
+        
+        <div class="register down">
+          <div class="form-element">
+            <span><i class="fa fa-user"></i></span>
+            <input type="text" placeholder="Full Name"/>
+          </div>
+          <div class="form-element">
+            <span><i class="fa fa-envelope"></i></span><input type="email" placeholder="Your Email Address"/>
+          </div>
+          <div class="form-element">
+            <span><i class="fa fa-lock"></i></span><input type="password" placeholder="Password"/>
+          </div>
+          <div class="form-element">
+            <span><i class="fa fa-lock"></i></span><input type="password" placeholder="Re-Enter Password"/>
+          </div>
+          <button class="btn-register">register</button>
+        </div>
+        
+        <div class="login-view-toggle">
+          <div class="sign-up-toggle is-active">Don't have an account? <a href="#">Sign Up</a></div>
+          <div class="login-toggle">Already have an account? <a href="#">Login</a></div>
+        </div>
+      </div>
+      
+<script src="{{ url_for('static', path='/js/regLogforCSS.js') }}"></script>
+<script src="{{ url_for('static', path='/js/RegLogFunctions.js') }}"></script>
+</body>
+</html>

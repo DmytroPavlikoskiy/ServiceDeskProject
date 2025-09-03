@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Шрифти -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome (стабільний CDN через jsDelivr) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+
+  <!-- Наші стилі -->
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/home.css') }}" />
+
+  <title>ServiceDesk Plus — Домашня</title>
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="sd-header">
+    <div class="sd-container sd-header__inner">
+      <a class="brand" href="/">
+        <img src="{{ url_for('static', path='/images/logo.svg') }}" alt="ServiceDesk Plus" class="brand__logo" onerror="this.style.display='none'">
+        <span class="brand__name">ServiceDesk Plus</span>
+      </a>
+
+      <nav class="nav">
+        <button class="nav__toggle" aria-label="Відкрити меню" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <ul class="nav__list">
+          <li><a href="#about">Про нас</a></li>
+          <li><a href="#features">Переваги</a></li>
+          <li><a href="#how">Як це працює</a></li>
+          <li><a href="#contacts">Контакти</a></li>
+        </ul>
+      </nav>
+
+      <!-- Кнопка користувача -->
+      <div class="user">
+        <button class="user__btn" id="userMenuBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="user__avatar" aria-hidden="true">MK</span>
+          <span class="user__caret"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+
+        <!-- Дропменю під кнопкою -->
+        <div class="user-menu" id="userMenu" role="menu" aria-labelledby="userMenuBtn">
+          <a class="user-menu__item" href="/tickets" role="menuitem">
+            <i class="fa-solid fa-ticket"></i> Мої заявки
+          </a>
+          <a class="user-menu__item" href="/profile" role="menuitem">
+            <i class="fa-solid fa-user"></i> Профіль
+          </a>
+          <div class="user-menu__divider" role="separator"></div>
+          <button class="user-menu__item user-menu__danger" role="menuitem" onclick="window.location.href='/logout'">
+            <i class="fa-solid fa-right-from-bracket"></i> Вийти
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="sd-container hero__inner">
+      <div class="hero__content">
+        <h1>Швидкий сервіс, прозорі статуси, зручний чат</h1>
+        <p>ServiceDesk Plus — платформа для заявок та комунікації з майстрами. Створюй тікет за хвилину, відстежуй виконання та спілкуйся вбудованим чатом.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="/tickets/new"><i class="fa-solid fa-plus"></i> Створити заявку</a>
+          <a class="btn btn--ghost" href="/tickets"><i class="fa-solid fa-list-check"></i> Переглянути мої заявки</a>
+        </div>
+        <div class="hero__meta">
+          <div><i class="fa-solid fa-bolt"></i> Середній час відповіді — 12 хв</div>
+          <div><i class="fa-solid fa-shield-halved"></i> Безпечна аутентифікація</div>
+          <div><i class="fa-solid fa-comments"></i> Чат з майстром в реальному часі</div>
+        </div>
+      </div>
+      <div class="hero__image">
+        <img src="{{ url_for('static', path='/images/hero-illustration.png') }}" alt="ServiceDesk ілюстрація" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section id="about" class="about">
+    <div class="sd-container about__inner">
+      <div class="about__text">
+        <h2>Хто ми такі?</h2>
+        <p>Ми — команда <strong>NovaFix</strong>, що робить сервіс простим та людяним. Наш ServiceDesk Plus поєднує заявку, діалог і аналітику, щоб ви витрачали менше часу на бюрократію і більше — на свою справу.</p>
+        <ul class="about__bullets">
+          <li><i class="fa-solid fa-circle-check"></i> Працюємо 24/7</li>
+          <li><i class="fa-solid fa-circle-check"></i> Пріоритезація за SLA</li>
+          <li><i class="fa-solid fa-circle-check"></i> Нотифікації у телеграмі</li>
+        </ul>
+      </div>
+      <div class="about__card">
+        <h3>Цифри, якими пишаємось</h3>
+        <div class="stats">
+          <div class="stat"><span>15k+</span><small>закритих заявок</small></div>
+          <div class="stat"><span>4.9★</span><small>рейтинг задоволеності</small></div>
+          <div class="stat"><span>98%</span><small>SLA виконання</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section id="features" class="features">
+    <div class="sd-container">
+      <h2 class="section-title">Що ви отримаєте</h2>
+      <div class="features__grid">
+        <div class="feature">
+          <i class="fa-solid fa-wand-magic-sparkles feature__icon"></i>
+          <h3>Миттєвий старт</h3>
+          <p>Створіть заявку за одну хвилину та відразу отримайте відповідь від майстра.</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-chart-line feature__icon"></i>
+          <h3>Прозорі статуси</h3>
+          <p>Від “Відкрито” до “Закрито” — всі етапи відстежуються в реальному часі.</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-lock feature__icon"></i>
+          <h3>Безпека</h3>
+          <p>Сучасна авторизація та безпечне зберігання даних з журналюванням подій.</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-robot feature__icon"></i>
+          <h3>Інтеграції</h3>
+          <p>Телеграм-бот для прийняття заявок і сповіщення про зміни статусів.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section id="how" class="how">
+    <div class="sd-container">
+      <h2 class="section-title">Як це працює</h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num">1</span>
+          <h4>Створіть заявку</h4>
+          <p>Опишіть проблему та додайте фото — так майстер швидше зорієнтується.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">2</span>
+          <h4>Майстер приймає</h4>
+          <p>Майстер підтверджує в Телеграмі та одразу відкривається чат на сайті.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">3</span>
+          <h4>Комунікація та виконання</h4>
+          <p>Уточнюйте деталі, погоджуйте час, отримуйте оновлення статусу.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <div class="sd-container cta__inner">
+      <h2>Готові спростити сервіс?</h2>
+      <p>Створюйте заявки, спілкуйтеся з майстрами, отримуйте результат швидше.</p>
+      <a class="btn btn--primary btn--lg" href="/tickets/new">Почати зараз</a>
+    </div>
+  </section>
+
+  <!-- ===== Contacts / Footer ===== -->
+  <footer id="contacts" class="footer">
+    <div class="sd-container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__name">ServiceDesk Plus</span>
+        <p>© {{ 2025 }} NovaFix. Усі права захищено.</p>
+      </div>
+      <div class="footer__links">
+        <a href="/privacy">Політика конфіденційності</a>
+        <a href="/terms">Умови користування</a>
+        <a href="mailto:support@novafix.example">Підтримка</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Скрипт -->
+  <script src="{{ url_for('static', path='/js/home.js') }}"></script>
+</body>
+</html>
