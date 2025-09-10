@@ -3,23 +3,28 @@ from enum import Enum
 from typing import Optional
 
 
-
 class UserType(str, Enum):
     ADMIN = "admin"
+    MASTER = "master"
     CLIENT = "client"
 
-class UserBase(BaseModel):                                                            
-    id: int = Field(..., ge=1, description="Унікальний ID користувача")           
-    email: EmailStr = Field(..., description="Електронна пошта")                   
+
+class UserBase(BaseModel):
+    id: int = Field(..., ge=1, description="Унікальний ID користувача")
+    email: EmailStr = Field(..., description="Електронна пошта")
     full_name: str = Field(..., min_length=2, max_length=100, description="Повне ім'я")
-    type: UserType = Field(..., description="Тип користувача")
+    role: UserType = Field(..., description="Роль користувача")
 
     class Config:
         orm_mode = True
 
 
 class UserCreate(BaseModel):
-    pass
+    email: EmailStr = Field(..., description="Електронна пошта")
+    full_name: str = Field(..., min_length=2, max_length=100, description="Повне ім'я")
+    password: str = Field(..., min_length=6, description="Пароль користувача")
+    # role не передаємо — завжди client
+    # backend буде ставити role = client автоматично.
 
 
 class UserUpdate(BaseModel):
@@ -30,9 +35,13 @@ class UserUpdate(BaseModel):
         orm_mode = True
 
 
-class User(UserBase):
-    id: int
+class AdminUserUpdate(UserUpdate):
+    role: Optional[UserType] = Field(None, description="Роль користувача")
 
     class Config:
         orm_mode = True
 
+
+class User(UserBase):
+    class Config:
+        orm_mode = True

@@ -25,14 +25,14 @@ def hello():
 async def get_tickets(db: Session = Depends(get_db)):
     return db.query(Ticket).all()
 
-@app.post("/api/create_ticket/", tags=["Ticket"])
+@app.post("/api/create/ticket", tags=["Ticket"])
 async def create_ticket(db: Session = Depends(get_db)):
     pass
 
 
-@app.get("/api/ticket/{ticket_id}/{client_id}", tags=["Ticket"])
+@app.get("/api/ticket/{client_id}", tags=["Ticket"])
 async def set_ticket(ticket_id: int, client_id: int, db: Session = Depends(get_db)):
-    ticket = db.query(Ticket).filter_by(id=ticket_id, client_id=client_id).first()
+    ticket = db.query(Ticket).filter_by(client_id=client_id).first()
     if ticket:
         return {
             "data": {
@@ -69,3 +69,4 @@ async def set_tickets(client_id: int, db: Session = Depends(get_db)):
                 "message": "Tickets not found!!!",
             }
         }
+

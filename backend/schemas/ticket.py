@@ -32,6 +32,7 @@ class TicketUpdate(BaseModel):
 class TicketResponse(TicketBase):
     id: int
     user_id: int
+    title: str
     status: TicketStatus
     created_date: datetime  
 

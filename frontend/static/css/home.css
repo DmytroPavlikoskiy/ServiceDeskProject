@@ -1,161 +1,836 @@
-:root{
-    --bg: #0b1020;
-    --card: #10162b;
-    --muted: #a8b0c2;
-    --text: #e9ecf1;
-    --accent: #5b8cff;
-    --accent-2: #7ef1d1;
-    --line: #202742;
-    --danger: #ff6b6b;
-    --shadow: 0 10px 30px rgba(0,0,0,.25);
+/* === Загальні стилі === */
+:root {
+  --color-bg: #f8fafc;
+  --color-dark: #1e293b;
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-text: #334155;
+  --color-light: #ffffff;
+  --radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+/* === Контейнер === */
+.sd-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* === Header === */
+.sd-header {
+  background: var(--color-light);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.sd-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: var(--color-dark);
+}
+
+.brand__logo {
+  width: 32px;
+  height: 32px;
+}
+
+/* === Навігація === */
+.nav__list {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav__list a {
+  text-decoration: none;
+  color: var(--color-dark);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav__list a:hover {
+  color: var(--color-primary);
+}
+
+.nav__toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-dark);
+}
+
+/* === User Menu === */
+.user {
+  position: relative;
+}
+
+.user__btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-light);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.user__btn:hover {
+  border-color: var(--color-primary);
+}
+
+.user__avatar {
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 25%;
+  padding: 6px 3px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Стартовий стан меню */
+.user-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  background: var(--color-light);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 180px;
+  z-index: 1000;
+}
+
+/* Активне меню */
+.user-menu.open {
+  max-height: 500px; /* достатньо для всіх елементів */
+  opacity: 1;
+}
+
+/* Пункти меню */
+.user-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  color: var(--color-dark);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.user-menu__item:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.user-menu__divider {
+  height: 1px;
+  background: rgba(0,0,0,0.1);
+  margin: 1px 0;
+}
+
+.user-menu__danger {
+  width: 100%;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 14px;
+  transition: color 0.3s ease;
+  background: var(--color-bg);
+}
+
+.user-menu__danger:hover {
+  color: #ef4444;
+}
+
+/* === Hero === */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #4f46e5, #6366f1);
+  color: #fff;
+  padding: 4rem 0;
+}
+
+.hero__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+}
+
+.hero__content {
+  flex: 1;
+}
+
+.hero__content h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero__content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero__meta {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.95rem;
+}
+
+.hero__image img {
+  width: 420px;
+  max-width: 100%;
+}
+
+/* === Buttons === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn--primary {
+  background: var(--color-light);
+  color: var(--color-primary);
+  border: none;
+}
+
+.btn--primary:hover {
+  background: #f1f5f9;
+}
+
+.btn--ghost {
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn--ghost:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.btn--lg {
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+}
+
+/* === Sections === */
+section {
+  padding: 4rem 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+/* === About === */
+.about__inner {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.about__bullets {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.about__bullets li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.about__card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* === Stats === */
+.stats {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.stat span {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* === Features === */
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.feature {
+  background: #fff;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.feature__icon {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+/* === Steps === */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.step {
+  background: #fff;
+  padding: 2rem;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.step__num {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* === CTA === */
+.cta {
+  background: linear-gradient(120deg, #4f46e5, #6366f1);
+  color: #fff;
+  text-align: center;
+  padding: 5rem 0;
+  border-radius: var(--radius);
+}
+
+.cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cta p {
+  margin-bottom: 2rem;
+}
+
+
+/* Кнопка-тоглер */
+.chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--color-primary);
+  color: var(--color-light);
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: var(--transition);
+  z-index: 9999;
+}
+.chat-toggle:hover { background: var(--color-primary-hover); }
+
+/* Віджет */
+/* === Віджет === */
+.chat-widget {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 420px;
+  height: 520px;
+  background: var(--color-light);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  overflow: hidden;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Контейнер */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Горизонтальний sidebar */
+.chat-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: var(--color-dark);
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.chat-avatar {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.chat-avatar.active {
+  outline: 3px solid var(--color-primary-hover);
+}
+.chat-unread {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--color-primary);
+  color: white;
+  font-size: 11px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+/* Main Chat */
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-header {
+  padding: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid #e2e8f0;
+  background: var(--color-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chat-close {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--color-dark);
+}
+
+/* Повідомлення */
+.chat-messages {
+  flex: 1; /* займає весь простір */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--color-light);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) rgba(0,0,0,0.1);
+}
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 4px;
+}
+
+/* Повідомлення текст */
+.message {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+.message.client {
+  background: var(--color-primary);
+  color: var(--color-light);
+  align-self: flex-end;
+  border-bottom-right-radius: 0;
+}
+.message.master {
+  background: #e2e8f0;
+  color: var(--color-dark);
+  align-self: flex-start;
+  border-bottom-left-radius: 0;
+}
+
+/* Input */
+.chat-input {
+  display: flex;
+  border-top: 1px solid #e2e8f0;
+  padding: 8px;
+  background: var(--color-light);
+}
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius);
+  outline: none;
+  transition: var(--transition);
+}
+.chat-input input:focus { border-color: var(--color-primary); }
+.chat-input button {
+  margin-left: 8px;
+  padding: 8px 14px;
+  background: var(--color-primary);
+  border: none;
+  color: var(--color-light);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.chat-input button:hover { background: var(--color-primary-hover); }
+
+/* Кнопка для файлу */
+.file-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-primary);
+  color: var(--color-light);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: var(--transition);
+  font-size: 16px;
+}
+.file-btn:hover {
+  background: var(--color-primary-hover);
+}
+
+/* === Footer === */
+.footer {
+  background: var(--color-dark);
+  color: #cbd5e1;
+  padding: 2rem 0;
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer__links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer__links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer__links a:hover {
+  color: #fff;
+}
+
+/* === Адаптив === */
+@media (max-width: 768px) {
+  .nav__list {
+    display: none;
   }
-  
-  * { box-sizing: border-box; }
-  html, body { height: 100%; }
-  body {
-    margin: 0;
-    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    color: var(--text);
-    background: radial-gradient(1200px 600px at 10% -10%, #1a2140 0%, transparent 60%), var(--bg);
+
+  .nav__toggle {
+    display: block;
   }
-  
-  /* Containers */
-  .sd-container { width: min(1200px, 92%); margin-inline: auto; }
-  
-  /* ===== Header ===== */
-  .sd-header {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(11,16,32,.7);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
+
+  .hero__inner,
+  .about__inner,
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
   }
-  .sd-header__inner {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
+
+  .chat-widget {
+    width: 90%;
+    right: 5%;
+    bottom: 10px;
   }
-  .brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 700; }
-  .brand__logo { width: 28px; height: 28px; }
-  .brand__name { letter-spacing: .3px; }
-  
-  .nav { display: flex; align-items: center; gap: 16px; }
-  .nav__toggle { display: none; background: transparent; border: 0; color: var(--text); font-size: 20px; }
-  .nav__list { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
-  .nav__list a { color: var(--muted); text-decoration: none; font-weight: 500; }
-  .nav__list a:hover { color: var(--text); }
-  
-  .user { position: relative; }
-  .user__btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 6px 10px; background: var(--card); border: 1px solid var(--line);
-    border-radius: 999px; color: var(--text); cursor: pointer;
-  }
-  .user__avatar {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    display: inline-grid; place-items: center; font-size: 12px; font-weight: 800; color: #0b1020;
-  }
-  .user__caret { opacity: .8; }
-  
-  /* user dropdown */
-  .user-menu {
-    position: absolute; right: 0; top: calc(100% + 10px);
-    width: 220px; background: var(--card); border: 1px solid var(--line);
-    border-radius: 14px; box-shadow: var(--shadow);
-    padding: 8px; display: none;
-  }
-  .user-menu.is-open { display: block; }
-  .user-menu__item {
-    width: 100%; display: flex; align-items: center; gap: 10px;
-    padding: 10px 12px; border-radius: 10px; background: transparent; border: 0;
-    color: var(--text); text-align: left; cursor: pointer; text-decoration: none;
-  }
-  .user-menu__item:hover { background: #131b33; }
-  .user-menu__divider { height: 1px; background: var(--line); margin: 6px 8px; }
-  .user-menu__danger { color: #ffdede; }
-  .user-menu__danger:hover { background: rgba(255,107,107,.1); }
-  
-  /* ===== Hero ===== */
-  .hero { padding: 72px 0 32px; border-bottom: 1px solid var(--line); }
-  .hero__inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
-  .hero__content h1 { margin: 0 0 14px; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; }
-  .hero__content p { color: var(--muted); font-size: 18px; margin: 0 0 22px; max-width: 640px; }
-  .hero__actions { display: flex; gap: 12px; margin-bottom: 18px; }
-  .hero__meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; color: var(--muted); font-size: 14px; }
-  .hero__image img { width: 100%; border-radius: 16px; border: 1px solid var(--line); box-shadow: var(--shadow); }
-  
-  /* Buttons */
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 16px; border-radius: 12px; text-decoration: none; font-weight: 700;
-    border: 1px solid var(--line); color: var(--text); background: #121a34;
-  }
-  .btn--primary { background: linear-gradient(135deg, var(--accent), #4a6ef5); border-color: transparent; color: white; }
-  .btn--ghost { background: transparent; }
-  .btn--lg { padding: 14px 20px; font-size: 18px; }
-  
-  /* ===== About ===== */
-  .about { padding: 56px 0; }
-  .about__inner { display: grid; grid-template-columns: 1.3fr .9fr; gap: 32px; }
-  .about__text h2 { margin-top: 0; font-size: 28px; }
-  .about__text p { color: var(--muted); }
-  .about__bullets { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; color: var(--text); }
-  .about__bullets i { color: var(--accent-2); margin-right: 8px; }
-  .about__card {
-    background: radial-gradient(400px 200px at 100% 0%, rgba(126,241,209,.08), transparent),
-                var(--card);
-    border: 1px solid var(--line);
-    border-radius: 16px; padding: 18px;
-  }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
-  .stat { background: #0f1730; border: 1px solid var(--line); border-radius: 12px; padding: 16px; text-align: center; }
-  .stat span { display: block; font-size: 22px; font-weight: 800; }
-  .stat small { color: var(--muted); }
-  
-  /* ===== Features ===== */
-  .features { padding: 56px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .section-title { margin: 0 0 24px; font-size: 26px; text-align: center; }
-  .features__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .feature {
-    background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px;
-  }
-  .feature__icon { font-size: 22px; color: var(--accent-2); margin-bottom: 8px; }
-  
-  /* ===== How ===== */
-  .how { padding: 56px 0; }
-  .steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 0; margin: 0; }
-  .step { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; position: relative; }
-  .step__num {
-    position: absolute; top: -12px; left: -12px; width: 34px; height: 34px; border-radius: 10px;
-    display: grid; place-items: center; background: linear-gradient(135deg, var(--accent), #4a6ef5);
-    color: #fff; font-weight: 800;
-  }
-  
-  /* ===== CTA ===== */
-  .cta { padding: 56px 0; border-top: 1px solid var(--line); }
-  .cta__inner { text-align: center; }
-  .cta__inner h2 { margin: 0 0 8px; font-size: 28px; }
-  .cta__inner p { color: var(--muted); margin: 0 0 16px; }
-  
-  /* ===== Footer ===== */
-  .footer { padding: 26px 0; border-top: 1px solid var(--line); color: var(--muted); }
-  .footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .footer__links { display: flex; gap: 16px; }
-  .footer__links a { color: var(--muted); text-decoration: none; }
-  .footer__links a:hover { color: var(--text); }
-  
-  /* ===== Responsive ===== */
-  @media (max-width: 1000px) {
-    .hero__inner, .about__inner { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 860px) {
-    .features__grid { grid-template-columns: repeat(2, 1fr); }
-    .steps { grid-template-columns: 1fr; }
-    .hero__meta { grid-template-columns: 1fr; }
-    .nav__toggle { display: inline-flex; }
-    .nav__list {
-      position: absolute; right: 12px; top: 64px; z-index: 40;
-      display: none; flex-direction: column; background: var(--card);
-      border: 1px solid var(--line); border-radius: 12px; padding: 8px;
-    }
-    .nav__list.is-open { display: flex; }
-  }
+}
+
+
+/* ==== MODAL WINDOW CREATE TICKET ==== */
+/* === Модальне вікно === */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  position: relative;
+  background: var(--color-light);
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  transform: translateY(-50px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  overflow-y: auto;
+  padding: 30px 25px;
+}
+
+.modal-overlay.open .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* === Заголовок модалки === */
+.modal-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* === Форма === */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-content label {
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+/* === Інпут поля === */
+.modal-content input[type="text"],
+.modal-content textarea {
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(79,70,229,0.2);
+}
+
+/* === File input як кнопка === */
+.modal-content input[type="file"] {
+  display: none; /* ховаємо дефолтний інпут */
+}
+
+.btn_control {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  gap: 10px;
+}
+
+/* Створимо кастомну кнопку */
+.custom-file-btn {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  /* border: none; */
+  border: 2px solid var(--color-primary);
+  background: var(--color-light);
+  color: var(--color-primary);
+}
+
+.custom-file-btn h3 {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-primary);
+  transition: 0.3s ease-in-out;
+}
+
+.custom-file-btn .color {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-primary);
+  transition: 0.3s ease-in-out;
+}
+
+.custom-file-btn:hover {
+  background: var(--color-primary-hover);
+  color: var(--color-light);
+}
+
+.custom-file-btn:hover h3 {
+  color: var(--color-light);
+}
+
+.custom-file-btn:hover .color {
+  color: var(--color-light);
+}
+/* === Кнопка Відправити === */
+.modal-content button[type="submit"] {
+  padding: 0.75rem 1.5rem;
+  width: 50%;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-light);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.modal-content button[type="submit"]:hover {
+  background: var(--color-primary-hover);
+}
+
+/* === Кнопка закриття === */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-dark);
+  transition: 0.3s;
+}
+
+.modal-close:hover {
+  color: var(--color-primary);
+}
+
+/* === Стиль скролу для модалки === */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+  border-radius: var(--radius);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(79,70,229,0.5);
+  border-radius: var(--radius);
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(79,70,229,0.7);
+}

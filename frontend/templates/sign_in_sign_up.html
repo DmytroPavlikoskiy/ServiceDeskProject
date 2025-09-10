@@ -1,58 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-pap9G3FwFkVJQXZ3dEL6S2GpD2PiX+9YV+eGhGvIT7b3g6/4gqciFVnQcZCjf4sJbJtB/Hn0Pv4CqGxC4SZo5g=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <!-- Font Awesome Free 6 -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', path='/css/SiSuStyle.css') }}">
-    <title>ServiceDesk Sign in/Sign up</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In / Sign Up - ServiceDesk</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/sign.css') }}">
+  <!-- Toast -->
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/toast.css') }}">
 </head>
 <body>
+  <header class="sd-header">
+    <div class="sd-container sd-header__inner">
+      <a href="/" class="brand">
+        <!-- <img src="/static/img/logo.png" alt="Logo" class="brand__logo"> -->
+        ServiceDesk
+      </a>
+      <nav>
+        <ul class="nav__list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/features">Features</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- <div class="container_reg_log_control">
-        
-    </div> -->
+  <section class="auth">
+    <div class="sd-container auth__inner">
+      <!-- Left side form -->
+      <div class="auth__card">
+        <div class="auth__tabs">
+          <button class="auth__tab is-active" data-tab="login">Sign In</button>
+          <button class="auth__tab" data-tab="register">Sign Up</button>
+        </div>
 
-    <div class="wrapper">
-        <div class="login is-active">
+        <!-- Login form -->
+        <form class="auth__form is-active" id="login-form">
           <div class="form-element">
-            <span><i class="fa fa-envelope"></i></span>
-            <input type="email" placeholder="Your Email Address"/>
+            <i class="fa fa-envelope"></i>
+            <input type="email" placeholder="Email Address" >
           </div>
           <div class="form-element">
-            <span><i class="fa fa-lock"></i></span><input type="password" placeholder=" Password"/>
+            <i class="fa fa-lock"></i>
+            <input type="password" placeholder="Password" >
           </div>
-          <button class="btn-login">login</button>
-        </div>
-        
-        <div class="register down">
+          <button type="submit" class="btn btn--primary btn--lg">Sign In</button>
+        </form>
+
+        <!-- Register form -->
+        <form class="auth__form" id="register-form">
           <div class="form-element">
-            <span><i class="fa fa-user"></i></span>
-            <input type="text" placeholder="Full Name"/>
-          </div>
-          <div class="form-element">
-            <span><i class="fa fa-envelope"></i></span><input type="email" placeholder="Your Email Address"/>
-          </div>
-          <div class="form-element">
-            <span><i class="fa fa-lock"></i></span><input type="password" placeholder="Password"/>
+            <i class="fa fa-user"></i>
+            <input type="text" placeholder="Full Name" >
           </div>
           <div class="form-element">
-            <span><i class="fa fa-lock"></i></span><input type="password" placeholder="Re-Enter Password"/>
+            <i class="fa fa-envelope"></i>
+            <input type="email" id="email" placeholder="Email Address" >
           </div>
-          <button class="btn-register">register</button>
-        </div>
-        
-        <div class="login-view-toggle">
-          <div class="sign-up-toggle is-active">Don't have an account? <a href="#">Sign Up</a></div>
-          <div class="login-toggle">Already have an account? <a href="#">Login</a></div>
-        </div>
+          <div class="form-element">
+            <i class="fa fa-lock"></i>
+            <input type="password" placeholder="Password" >
+          </div>
+          <div class="form-element">
+            <i class="fa fa-lock"></i>
+            <input type="password" placeholder="Confirm Password" >
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg">Sign Up</button>
+        </form>
       </div>
-      
-<script src="{{ url_for('static', path='/js/regLogforCSS.js') }}"></script>
-<script src="{{ url_for('static', path='/js/RegLogFunctions.js') }}"></script>
+
+      <!-- Right side illustration -->
+      <div class="auth__image">
+        <img src="/static/images/app-login-security-illustration-svg-png-download-4077880.webp" alt="Welcome illustration">
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="sd-container footer__inner">
+      <p>© 2025 ServiceDesk. All rights reserved.</p>
+      <div class="footer__links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notifications -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="{{ url_for('static', path='/js/SignFunctions.js') }}"></script>
+  <script src="{{ url_for('static', path='/js/toast_msg.js') }}"></script>
 </body>
 </html>

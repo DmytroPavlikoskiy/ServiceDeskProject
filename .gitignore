@@ -1,0 +1,19 @@
+# Alembic
+alembic/__pycache__/
+alembic/*.pyc
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Тести / coverage
+.coverage
+htmlcov/
+.pytest_cache/
