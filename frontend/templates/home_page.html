@@ -9,10 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome (стабільний CDN через jsDelivr) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
 
-  <!-- Наші стилі -->
+  <!-- Анімації -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+  <!-- Toast -->
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/toast.css') }}">
+
+  <!-- Стилі -->
   <link rel="stylesheet" href="{{ url_for('static', path='/css/home.css') }}" />
 
   <title>ServiceDesk Plus — Домашня</title>
@@ -38,23 +44,17 @@
         </ul>
       </nav>
 
-      <!-- Кнопка користувача -->
+      <!-- User -->
       <div class="user">
         <button class="user__btn" id="userMenuBtn" aria-haspopup="true" aria-expanded="false">
-          <span class="user__avatar" aria-hidden="true">MK</span>
+          <span class="user__avatar">MK</span>
           <span class="user__caret"><i class="fa-solid fa-chevron-down"></i></span>
         </button>
-
-        <!-- Дропменю під кнопкою -->
-        <div class="user-menu" id="userMenu" role="menu" aria-labelledby="userMenuBtn">
-          <a class="user-menu__item" href="/tickets" role="menuitem">
-            <i class="fa-solid fa-ticket"></i> Мої заявки
-          </a>
-          <a class="user-menu__item" href="/profile" role="menuitem">
-            <i class="fa-solid fa-user"></i> Профіль
-          </a>
-          <div class="user-menu__divider" role="separator"></div>
-          <button class="user-menu__item user-menu__danger" role="menuitem" onclick="window.location.href='/logout'">
+        <div class="user-menu" id="userMenu" role="menu">
+          <a class="user-menu__item" href="/tickets"><i class="fa-solid fa-list-check"></i> Мої заявки</a>
+          <a class="user-menu__item" href="/profile"><i class="fa-solid fa-user"></i> Профіль</a>
+          <div class="user-menu__divider"></div>
+          <button class="user-menu__item user-menu__danger" onclick="window.location.href='/logout'">
             <i class="fa-solid fa-right-from-bracket"></i> Вийти
           </button>
         </div>
@@ -62,46 +62,86 @@
     </div>
   </header>
 
+  <!-- ===== User Tickets List ===== -->
+
+  <div id="ticketsList"></div>
+
   <!-- ===== Hero ===== -->
   <section class="hero">
     <div class="sd-container hero__inner">
-      <div class="hero__content">
+      <div class="hero__content" data-aos="fade-right">
         <h1>Швидкий сервіс, прозорі статуси, зручний чат</h1>
         <p>ServiceDesk Plus — платформа для заявок та комунікації з майстрами. Створюй тікет за хвилину, відстежуй виконання та спілкуйся вбудованим чатом.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="/tickets/new"><i class="fa-solid fa-plus"></i> Створити заявку</a>
-          <a class="btn btn--ghost" href="/tickets"><i class="fa-solid fa-list-check"></i> Переглянути мої заявки</a>
+          <a class="btn btn--primary" id="openTicketModal" href="#"><i class="fa-solid fa-plus"></i> Створити заявку</a>
+          <a class="btn btn--ghost" href="/tickets"><i class="fa-solid fa-list-check"></i> Мої заявки</a>
         </div>
         <div class="hero__meta">
-          <div><i class="fa-solid fa-bolt"></i> Середній час відповіді — 12 хв</div>
-          <div><i class="fa-solid fa-shield-halved"></i> Безпечна аутентифікація</div>
-          <div><i class="fa-solid fa-comments"></i> Чат з майстром в реальному часі</div>
+          <div><i class="fa-solid fa-bolt"></i> Відповідь за 12 хв</div>
+          <div><i class="fa-solid fa-shield-halved"></i> Захищені дані</div>
+          <div><i class="fa-solid fa-comments"></i> Живий чат</div>
         </div>
       </div>
-      <div class="hero__image">
-        <img src="{{ url_for('static', path='/images/hero-illustration.png') }}" alt="ServiceDesk ілюстрація" onerror="this.style.display='none'">
+      <div class="hero__image" data-aos="fade-left">
+        <img src="https://illustrations.popsy.co/violet/customer-support.svg" alt="ServiceDesk ілюстрація">
       </div>
     </div>
   </section>
 
+<!-- ===== Modal Ticket ===== -->
+<div class="modal-overlay" id="ticketModal">
+  <div class="modal-content">
+    <button class="modal-close" id="closeTicketModal">&times;</button>
+
+    <h2 class="modal-title">Створити нову заявку</h2>
+
+    <form id="ticketForm">
+      <label for="ticketTitle">Тема</label>
+      <input type="text" id="ticketTitle" name="title" placeholder="Введіть тему" required>
+
+      <label for="ticketDescription">Опис</label>
+      <textarea id="ticketDescription" name="description" placeholder="Опишіть проблему" rows="5" required></textarea>
+
+       <!-- ==== Show Files ===== -->
+        
+       <div class="files_control">
+
+       </div>
+
+       <!-- ===================== -->
+
+      <div class="btn_control">
+        <label for="ticketFiles" class="custom-file-btn">
+          <i class="fa-solid fa-plus color"></i>
+          <h3>Додати фото</h3>
+        </label>
+        <input type="file" id="ticketFiles" name="files" accept="image/*" multiple>
+  
+        <button type="submit"><i class="fa-solid fa-share-from-square"></i>Відправити</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+    
   <!-- ===== About ===== -->
   <section id="about" class="about">
     <div class="sd-container about__inner">
-      <div class="about__text">
-        <h2>Хто ми такі?</h2>
-        <p>Ми — команда <strong>NovaFix</strong>, що робить сервіс простим та людяним. Наш ServiceDesk Plus поєднує заявку, діалог і аналітику, щоб ви витрачали менше часу на бюрократію і більше — на свою справу.</p>
+      <div class="about__text" data-aos="fade-up">
+        <h2>Хто ми?</h2>
+        <p>Ми — команда <strong>NovaFix</strong>, що робить сервіс простим та людяним. ServiceDesk Plus поєднує заявку, діалог і аналітику, щоб ви витрачали менше часу на бюрократію і більше — на свою справу.</p>
         <ul class="about__bullets">
-          <li><i class="fa-solid fa-circle-check"></i> Працюємо 24/7</li>
-          <li><i class="fa-solid fa-circle-check"></i> Пріоритезація за SLA</li>
-          <li><i class="fa-solid fa-circle-check"></i> Нотифікації у телеграмі</li>
+          <li><i class="fa-solid fa-circle-check"></i> 24/7 робота</li>
+          <li><i class="fa-solid fa-circle-check"></i> SLA-пріоритезація</li>
+          <li><i class="fa-solid fa-circle-check"></i> Телеграм-сповіщення</li>
         </ul>
       </div>
-      <div class="about__card">
-        <h3>Цифри, якими пишаємось</h3>
+      <div class="about__card" data-aos="zoom-in">
+        <h3>Наші досягнення</h3>
         <div class="stats">
-          <div class="stat"><span>15k+</span><small>закритих заявок</small></div>
-          <div class="stat"><span>4.9★</span><small>рейтинг задоволеності</small></div>
-          <div class="stat"><span>98%</span><small>SLA виконання</small></div>
+          <div class="stat"><span>15k+</span><small>заявок</small></div>
+          <div class="stat"><span>4.9★</span><small>рейтинг</small></div>
+          <div class="stat"><span>98%</span><small>SLA</small></div>
         </div>
       </div>
     </div>
@@ -112,25 +152,25 @@
     <div class="sd-container">
       <h2 class="section-title">Що ви отримаєте</h2>
       <div class="features__grid">
-        <div class="feature">
+        <div class="feature" data-aos="flip-left">
           <i class="fa-solid fa-wand-magic-sparkles feature__icon"></i>
           <h3>Миттєвий старт</h3>
-          <p>Створіть заявку за одну хвилину та відразу отримайте відповідь від майстра.</p>
+          <p>Заявка за хвилину та швидка відповідь майстра.</p>
         </div>
-        <div class="feature">
+        <div class="feature" data-aos="flip-left" data-aos-delay="100">
           <i class="fa-solid fa-chart-line feature__icon"></i>
-          <h3>Прозорі статуси</h3>
-          <p>Від “Відкрито” до “Закрито” — всі етапи відстежуються в реальному часі.</p>
+          <h3>Прозорість</h3>
+          <p>Всі статуси відстежуються онлайн.</p>
         </div>
-        <div class="feature">
+        <div class="feature" data-aos="flip-left" data-aos-delay="200">
           <i class="fa-solid fa-lock feature__icon"></i>
           <h3>Безпека</h3>
-          <p>Сучасна авторизація та безпечне зберігання даних з журналюванням подій.</p>
+          <p>Сучасна авторизація, захист і журналювання.</p>
         </div>
-        <div class="feature">
+        <div class="feature" data-aos="flip-left" data-aos-delay="300">
           <i class="fa-solid fa-robot feature__icon"></i>
           <h3>Інтеграції</h3>
-          <p>Телеграм-бот для прийняття заявок і сповіщення про зміни статусів.</p>
+          <p>Телеграм-бот і нотифікації в месенджерах.</p>
         </div>
       </div>
     </div>
@@ -141,20 +181,20 @@
     <div class="sd-container">
       <h2 class="section-title">Як це працює</h2>
       <ol class="steps">
-        <li class="step">
+        <li class="step" data-aos="fade-up">
           <span class="step__num">1</span>
           <h4>Створіть заявку</h4>
-          <p>Опишіть проблему та додайте фото — так майстер швидше зорієнтується.</p>
+          <p>Опишіть проблему та додайте фото.</p>
         </li>
-        <li class="step">
+        <li class="step" data-aos="fade-up" data-aos-delay="100">
           <span class="step__num">2</span>
           <h4>Майстер приймає</h4>
-          <p>Майстер підтверджує в Телеграмі та одразу відкривається чат на сайті.</p>
+          <p>Підтвердження в Телеграмі + чат.</p>
         </li>
-        <li class="step">
+        <li class="step" data-aos="fade-up" data-aos-delay="200">
           <span class="step__num">3</span>
-          <h4>Комунікація та виконання</h4>
-          <p>Уточнюйте деталі, погоджуйте час, отримуйте оновлення статусу.</p>
+          <h4>Комунікація</h4>
+          <p>Уточнення деталей та швидке виконання.</p>
         </li>
       </ol>
     </div>
@@ -162,29 +202,68 @@
 
   <!-- ===== CTA ===== -->
   <section class="cta">
-    <div class="sd-container cta__inner">
+    <div class="sd-container cta__inner" data-aos="zoom-in">
       <h2>Готові спростити сервіс?</h2>
-      <p>Створюйте заявки, спілкуйтеся з майстрами, отримуйте результат швидше.</p>
+      <p>Створюйте заявки, спілкуйтеся з майстрами та отримуйте результат швидше.</p>
       <a class="btn btn--primary btn--lg" href="/tickets/new">Почати зараз</a>
     </div>
   </section>
 
-  <!-- ===== Contacts / Footer ===== -->
+  <!-- Кнопка для відкриття/закриття -->
+  <button id="chatToggle" class="chat-toggle">💬</button>
+
+<!-- Віджет чату -->
+<div id="chatWidget" class="chat-widget">
+  <div class="chat-container">
+    <!-- Sidebar зверху -->
+    <div class="chat-topbar" id="chatTopbar">
+      <!-- Тут динамічно зʼявляться кружки з ініціалами -->
+    </div>
+
+    <!-- Main Chat -->
+    <div class="chat-main">
+      <div class="chat-header">
+        <span id="chatHeader">Виберіть чат</span>
+        <button class="chat-close" onclick="toggleChat()">✖</button>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <form class="chat-input" onsubmit="sendMessage(event)">
+        <input type="text" id="messageInput" placeholder="Напишіть повідомлення..." />
+        
+        <!-- Кнопка для вибору файлу -->
+        <label for="fileInput" class="file-btn">
+          <i class="fa-solid fa-paperclip"></i>
+        </label>
+        <input type="file" id="fileInput" accept="image/*" style="display:none;" />
+      
+        <button type="submit">Відправити</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <!-- ===== Footer ===== -->
   <footer id="contacts" class="footer">
     <div class="sd-container footer__inner">
       <div class="footer__brand">
         <span class="brand__name">ServiceDesk Plus</span>
-        <p>© {{ 2025 }} NovaFix. Усі права захищено.</p>
+        <p>© 2025 NovaFix. Усі права захищено.</p>
       </div>
       <div class="footer__links">
-        <a href="/privacy">Політика конфіденційності</a>
-        <a href="/terms">Умови користування</a>
+        <a href="/privacy">Політика</a>
+        <a href="/terms">Умови</a>
         <a href="mailto:support@novafix.example">Підтримка</a>
       </div>
     </div>
   </footer>
 
-  <!-- Скрипт -->
-  <script src="{{ url_for('static', path='/js/home.js') }}"></script>
+   <!-- Toast Notifications -->
+   <div class="toast-container" id="toast-container"></div>
+
+  <!-- JS -->
+  <script src="{{ url_for('static', path='/js/HomeFunctions.js') }}"></script>
+  <script src="{{ url_for('static', path='/js/toast_msg.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ once: true, duration: 700 });</script>
 </body>
 </html>

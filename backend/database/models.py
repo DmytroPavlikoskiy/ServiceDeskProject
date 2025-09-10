@@ -1,4 +1,4 @@
-from sqlalchemy import String, Integer, Text, DateTime, ForeignKey, func
+from sqlalchemy import String, Integer, Text, DateTime, ForeignKey, func, BigInteger
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from .db import Base
 
@@ -8,6 +8,7 @@ class User(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
+    telegram_id: Mapped[int | None] = mapped_column(BigInteger, unique=True, nullable=True)
     email: Mapped[str] = mapped_column(String(225), unique=True, index=True, nullable=False)
     full_name: Mapped[str] = mapped_column(String(100), nullable=False)
     role: Mapped[str] = mapped_column(String(50), default="client", nullable=False)

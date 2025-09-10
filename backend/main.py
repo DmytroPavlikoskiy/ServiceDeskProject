@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
-from database.models.models import Ticket  # імпортуємо конкретну модель
+from database.models import Ticket
 from database.dependencies import get_db
 from settings.settings import settings
 
@@ -25,6 +25,48 @@ def hello():
 async def get_tickets(db: Session = Depends(get_db)):
     return db.query(Ticket).all()
 
-@app.post("/api/create_ticket/", tags=["Ticket"])
+@app.post("/api/create/ticket", tags=["Ticket"])
 async def create_ticket(db: Session = Depends(get_db)):
     pass
+
+
+@app.get("/api/ticket/{client_id}", tags=["Ticket"])
+async def set_ticket(ticket_id: int, client_id: int, db: Session = Depends(get_db)):
+    ticket = db.query(Ticket).filter_by(client_id=client_id).first()
+    if ticket:
+        return {
+            "data": {
+                "status": 200,
+                "ticket": ticket,
+                "message": "Ticket has found success!!!"
+            }
+        }
+    else:
+        return {
+            "data": {
+                "status": 404,
+                "message": "Ticket not found!!!"
+            }
+        }
+
+
+
+@app.get("/api/tickets/{client_id}", tags=["Ticket"])
+async def set_tickets(client_id: int, db: Session = Depends(get_db)):
+    tickets = db.query(Ticket).filter_by(client_id=client_id).all()
+    if tickets:
+        return {
+            "data": {
+                "status": 200,
+                "ticket": tickets,
+                "message": "Ticket has found success!!!"
+            }
+        }
+    else:
+        return {
+            "data": {
+                "status": 404,
+                "message": "Tickets not found!!!",
+            }
+        }
+
