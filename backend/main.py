@@ -16,17 +16,32 @@ app.add_middleware(
     allow_headers=settings.ALLOW_HEADERS,
 )
 
+@app.post("/files/upload", tags=["Files"])
+async def upload_file(file: UploadFile = File(...)):
+    try:
+        if USE_S3:
+            raise HTTPException(status_code=501, detail="S3 upload not implemented")
+        else:
+            filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+            with open(filepath, "wb") as buffer:
+                buffer.write(await file.read())
+            return {"message": "File uploaded", "path": filepath}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+# --------- ENDPOINT TEST ----------
 @app.get("/api/hello")
 def hello():
     return {"message": "Hello from backend!"}
 
-# Приклади маршрутів для Ticket
+# --------- ENDPOINTS TICKETS ----------
 @app.get("/api/get_tickets/", tags=["Ticket"])
 async def get_tickets(db: Session = Depends(get_db)):
     return db.query(Ticket).all()
 
-@app.post("/api/create/ticket", tags=["Ticket"])
+@app.post("/api/create_ticket/", tags=["Ticket"])
 async def create_ticket(db: Session = Depends(get_db)):
+    # Ici tu devras ajouter la logique pour insérer en DB
     pass
 
 
