@@ -13,6 +13,7 @@ class User(Base):
     full_name: Mapped[str] = mapped_column(String(100), nullable=False)
     role: Mapped[str] = mapped_column(String(50), default="client", nullable=False)
     created_at: Mapped[DateTime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    password: Mapped[str] = mapped_column(String, nullable=False)
 
     tickets: Mapped[list["Ticket"]] = relationship("Ticket", back_populates="client")
     messages: Mapped[list["Message"]] = relationship("Message", back_populates="author")
