@@ -58,14 +58,23 @@ const tabs = document.querySelectorAll(".auth__tab");
           body: JSON.stringify({ email, password })
         });
   
-        const data = await res.json();
+        // const data = await res.json();
+        let data;
+        try {
+          data = await res.json();
+        } catch {
+            data = {};
+        }
   
         if (!res.ok) {
-          showToast(data.message || "Помилка логіна", "error");
+          
+          const message = data.detail || "Помилка логінації";
+          showToast(message, "error");
           return;
         }
   
         showToast("Успішний логін!", "success");
+        
         setTimeout(() => {
             window.location.replace("/home");
         }, 3500)
@@ -90,6 +99,8 @@ const tabs = document.querySelectorAll(".auth__tab");
         return;
       }
       if (!validateEmail(email)) {
+        console.log("HELLOOOOOO");
+        
         showToast("Будь ласка, введіть коректний email.", "error");
         return;
       }
@@ -114,23 +125,36 @@ const tabs = document.querySelectorAll(".auth__tab");
           body: JSON.stringify({ full_name: fullName, email, password })
         });
   
-        const data = await res.json();
+        // const data = await res.json();
+        let data;
+        try {
+          data = await res.json();
+        } catch {
+            data = {};
+        }
   
         if (!res.ok) {
-          showToast(data.message || "Помилка реєстрації", "error");
+          console.log(data.detail, "HELLLLOOO");
+          const message = data.detail || "Помилка реєстрації";
+          showToast(message, "error");
           return;
         }
   
         showToast("Успішна реєстрація! Тепер можете увійти.", "success");
-        // показати логін форму
         registerForm.classList.remove("is-active");
         registerForm.classList.add("is-instant");
-        registerForm.classList.remove("is-instant");
+
+        // Показуємо логін форму
+        loginForm.classList.remove("is-instant");
         loginForm.classList.add("is-active");
-      } catch (err) {
-        console.error(err);
-        showToast("Помилка з сервером. Спробуйте пізніше.", "error");
-      }
+
+        // Оновлюємо вкладки
+        tabs.forEach(t => t.classList.remove("is-active"));
+        document.querySelector('.auth__tab[data-tab="login"]').classList.add("is-active");
+        } catch (err) {
+          console.error(err);
+          showToast("Помилка з сервером. Спробуйте пізніше.", "error");
+        }
     });
   
     // --- Функція для перевірки email ---
@@ -138,25 +162,8 @@ const tabs = document.querySelectorAll(".auth__tab");
       const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return re.test(email);
     }
-  
-    // --- Toast Notifications ---
-    function showToast(message, type = "success") {
-      const container = document.getElementById("toast-container");
-      const toast = document.createElement("div");
-      toast.className = `toast toast--${type}`;
-      toast.innerHTML = `
-        <i class="${type === 'success' ? 'fa fa-check-circle' : 'fa fa-exclamation-circle'}"></i>
-        <span>${message}</span>
-      `;
-  
-      container.appendChild(toast);
-  
-      // Автоматично видаляємо toast через 3.5 секунд
-      setTimeout(() => {
-        toast.remove();
-      }, 3500);
-    }
-  });
+
+});
 
 
 
