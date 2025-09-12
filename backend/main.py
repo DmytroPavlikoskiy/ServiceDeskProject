@@ -19,4 +19,3 @@ app.add_middleware(
     allow_methods=settings.ALLOW_METHODS,
     allow_headers=settings.ALLOW_HEADERS,
 )
-

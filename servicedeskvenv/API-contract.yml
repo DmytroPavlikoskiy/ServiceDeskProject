@@ -1,0 +1,332 @@
+openapi: 3.1.0
+info:
+  title: ServiceDesk Plus API
+  version: 1.1.0
+  description: >
+    REST API для системи ServiceDesk Plus.
+    Покриває функціонал користувачів, заявок, чатів, повідомлень, адміністраторських дій та Telegram інтеграцій.
+
+servers:
+  - url: https://api.servicedesk.local/v1
+
+tags:
+  - name: Auth
+    description: Реєстрація та автентифікація
+  - name: Tickets
+    description: Заявки користувачів
+  - name: Chats
+    description: Чати між клієнтом і майстром
+  - name: Messages
+    description: Повідомлення в чатах
+  - name: Files
+    description: Файли, прикріплені до заявок
+  - name: Admin
+    description: Адміністраторський функціонал
+  - name: Client
+    description: Клієнтський функціонал
+  - name: Telegram
+    description: Інтеграція з Telegram
+
+paths:
+  /auth/register:
+    post:
+      tags: [Auth]
+      summary: Реєстрація нового користувача
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password, full_name]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string, minLength: 6 }
+                full_name: { type: string }
+                role:
+                  type: string
+                  enum: [client, admin]
+                  default: client
+      responses:
+        '201':
+          description: Успішна реєстрація
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Логін користувача
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string }
+                password: { type: string }
+      responses:
+        '200':
+          description: Успішний вхід
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token: { type: string }
+                  token_type: { type: string, example: Bearer }
+
+  /tickets:
+    post:
+      tags: [Tickets]
+      summary: Створення нової заявки (клієнт)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, description]
+              properties:
+                title: { type: string }
+                description: { type: string }
+                priority:
+                  type: string
+                  enum: [low, medium, high]
+                  default: medium
+      responses:
+        '201':
+          description: Заявка створена (автоматично створюється чат)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ticket: 
+                    $ref: '#/components/schemas/Ticket'
+                  chat:
+                    $ref: '#/components/schemas/Chat'
+
+    get:
+      tags: [Tickets]
+      summary: Отримати список заявок (для клієнта – тільки свої, для адміна – всі)
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [open, in_progress, closed]
+      responses:
+        '200':
+          description: Список заявок
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ticket'
+
+  /tickets/{ticket_id}:
+    get:
+      tags: [Tickets]
+      summary: Отримати заявку по ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: ticket_id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: Деталі заявки
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'
+
+    patch:
+      tags: [Admin]
+      summary: Оновити статус заявки (адмін)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: ticket_id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [open, in_progress, closed]
+      responses:
+        '200':
+          description: Заявка оновлена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'
+
+  /chats/{chat_id}/messages:
+    post:
+      tags: [Messages]
+      summary: Надіслати повідомлення в чат
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: chat_id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [text]
+              properties:
+                text: { type: string }
+      responses:
+        '201':
+          description: Повідомлення створене
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+
+    get:
+      tags: [Messages]
+      summary: Отримати повідомлення чату
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: chat_id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: Список повідомлень
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Message'
+
+  /files/upload:
+    post:
+      tags: [Files]
+      summary: Завантаження файлу до заявки
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [ticket_id, file]
+              properties:
+                ticket_id: { type: integer }
+                file: { type: string, format: binary }
+      responses:
+        '201':
+          description: Файл завантажений
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+
+  /telegram/webhook:
+    post:
+      tags: [Telegram]
+      summary: Вхідні повідомлення від Telegram
+      description: Використовується для отримання апдейтів (нові заявки, статуси).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    User:
+      type: object
+      properties:
+        id: { type: integer }
+        email: { type: string }
+        full_name: { type: string }
+        role:
+          type: string
+          enum: [client, admin]
+        created_at: { type: string, format: date-time }
+
+    Ticket:
+      type: object
+      properties:
+        id: { type: integer }
+        title: { type: string }
+        description: { type: string }
+        status:
+          type: string
+          enum: [open, in_progress, closed]
+        priority:
+          type: string
+          enum: [low, medium, high]
+        client_id: { type: integer }
+        created_at: { type: string, format: date-time }
+
+    Chat:
+      type: object
+      properties:
+        id: { type: integer }
+        ticket_id: { type: integer }
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        created_at: { type: string, format: date-time }
+
+    Message:
+      type: object
+      properties:
+        id: { type: integer }
+        chat_id: { type: integer }
+        author_id: { type: integer }
+        text: { type: string }
+        created_at: { type: string, format: date-time }
+
+    File:
+      type: object
+      properties:
+        id: { type: integer }
+        ticket_id: { type: integer }
+        filename: { type: string }
+        url: { type: string }
+        uploaded_at: { type: string, format: date-time }
