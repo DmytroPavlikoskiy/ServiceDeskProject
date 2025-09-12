@@ -1,3 +1,163 @@
+// // // ==== INIT USER CHECK ====
+// // async function fetchCurrentUser() {
+// //   try {
+// //     const res = await fetch("http://localhost:8000/api/user/auth/user", {
+// //       method: "GET",
+// //       credentials: "include"
+// //     });
+
+// //     if (!res.ok) throw new Error("Unauthorized");
+
+// //     const data = await res.json();
+// //     currentUserId = data.id;
+// //     return data;
+// //   } catch (err) {
+// //     console.warn("❌ Користувач не авторизований:", err);
+// //     // редірект на логін
+// //     // window.location.replace("/");
+    
+// //   }
+// // }
+
+// // // ==== INIT APP ====
+// // document.addEventListener("DOMContentLoaded", async () => {
+// //   const user = await fetchCurrentUser();
+// //   if (!user) return; // зупиняєм, бо редіректнувся
+
+// //   // Ініціалізація чату
+// //   await initChat();
+
+// //   // Завантаження тікетів
+// //   fetchTickets(user.id);
+// // });
+
+
+// // // ==== CHAT FUNCTIONS ====
+// // // (тут залишаємо твої функції, але прибрав дублікати і виправив порядок)
+// // async function initChat() {
+// //   await fetchChats();
+// //   renderTopbar();
+// // }
+
+// // // ==== FETCH TICKETS ====
+// // async function fetchTickets(clientId) {
+// //   try {
+// //     const response = await fetch(`/api/ticket/${clientId}`, {
+// //       method: "GET",
+// //       credentials: "include"
+// //     });
+
+// //     if (!response.ok) throw new Error("Помилка при отриманні тікетів");
+
+// //     const result = await response.json();
+// //     const ticketsContainer = document.getElementById("ticketsList");
+// //     ticketsContainer.innerHTML = "";
+
+// //     if (result.data?.status === 200 && result.data.ticket) {
+// //       const tickets = Array.isArray(result.data.ticket)
+// //         ? result.data.ticket
+// //         : [result.data.ticket];
+
+// //       tickets.forEach(ticket => {
+// //         const ticketCard = document.createElement("div");
+// //         ticketCard.classList.add("ticket-card");
+// //         ticketCard.innerHTML = `
+// //           <h3>${ticket.title}</h3>
+// //           <p>${ticket.description || "Без опису"}</p>
+// //           <span class="status">Статус: ${ticket.status}</span>
+// //         `;
+// //         ticketsContainer.appendChild(ticketCard);
+// //       });
+// //     } else {
+// //       ticketsContainer.innerHTML = `<p>У вас поки що немає заявок.</p>`;
+// //     }
+// //   } catch (error) {
+// //     console.error("❌ Помилка при отриманні тікетів:", error);
+// //     document.getElementById("ticketsList").innerHTML = `<p>Не вдалося завантажити заявки.</p>`;
+// //   }
+// // }
+
+
+// // // ==== TICKET MODAL ====
+// // const openModalBtn = document.getElementById("openTicketModal");
+// // const ticketModal = document.getElementById("ticketModal");
+// // const closeModalBtn = document.getElementById("closeTicketModal");
+// // const ticketForm = document.getElementById("ticketForm");
+
+// // openModalBtn.addEventListener("click", e => {
+// //   e.preventDefault();
+// //   ticketModal.classList.add("open");
+// // });
+
+// // closeModalBtn.addEventListener("click", () => {
+// //   ticketModal.classList.remove("open");
+// // });
+
+// // ticketModal.addEventListener("click", e => {
+// //   if (e.target === ticketModal) {
+// //     ticketModal.classList.remove("open");
+// //   }
+// // });
+
+// // ticketForm.addEventListener("submit", async e => {
+// //   e.preventDefault();
+
+// //   const title = ticketForm.title.value.trim();
+// //   const description = ticketForm.description.value.trim();
+// //   const files = ticketForm.files.files;
+
+// //   if (title.length < 3 || description.length < 10) {
+// //     showToast("Заповніть правильно всі поля!", "error");
+// //     return;
+// //   }
+
+// //   try {
+// //     // 1. створення заявки
+// //     const payload = { title, description, priority: "medium" };
+// //     const res = await fetch("/api/tickets", {
+// //       method: "POST",
+// //       headers: { "Content-Type": "application/json" },
+// //       credentials: "include",
+// //       body: JSON.stringify(payload)
+// //     });
+
+// //     if (!res.ok) {
+// //       const err = await res.json();
+// //       throw new Error(err.detail || "Не вдалося створити заявку");
+// //     }
+
+// //     const { ticket } = await res.json();
+
+// //     // 2. завантаження файлів
+// //     if (files.length > 0) {
+// //       for (const file of files) {
+// //         const formData = new FormData();
+// //         formData.append("ticket_id", ticket.id);
+// //         formData.append("file", file);
+
+// //         await fetch("/api/files/upload", {
+// //           method: "POST",
+// //           credentials: "include",
+// //           body: formData
+// //         });
+// //       }
+// //     }
+
+// //     showToast("✅ Заявка успішно створена!", "success");
+// //     ticketForm.reset();
+// //     ticketModal.classList.remove("open");
+// //     fetchTickets(currentUserId);
+
+// //   } catch (err) {
+// //     console.error("❌ Помилка при створенні заявки:", err);
+// //     showToast(err.message, "error");
+// //   }
+// // });
+
+// let currentUserId;
+// let chatSocket;
+// let currentChatId;
+
 // // ==== INIT USER CHECK ====
 // async function fetchCurrentUser() {
 //   try {
@@ -6,7 +166,10 @@
 //       credentials: "include"
 //     });
 
-//     if (!res.ok) throw new Error("Unauthorized");
+//     if (!res.ok) {
+//       // користувач не авторизований або токен недійсний
+//       throw new Error("Unauthorized");
+//     }
 
 //     const data = await res.json();
 //     currentUserId = data.id;
@@ -14,26 +177,28 @@
 //   } catch (err) {
 //     console.warn("❌ Користувач не авторизований:", err);
 //     // редірект на логін
-//     // window.location.replace("/");
-    
+//     window.location.replace("http://localhost:3000/"); 
 //   }
 // }
 
+// // ==== LOGOUT ====
+
+
+
 // // ==== INIT APP ====
 // document.addEventListener("DOMContentLoaded", async () => {
+//   // перевірка користувача
 //   const user = await fetchCurrentUser();
-//   if (!user) return; // зупиняєм, бо редіректнувся
+//   if (!user) return; // якщо редіректнувся, далі код не виконується
 
 //   // Ініціалізація чату
 //   await initChat();
 
 //   // Завантаження тікетів
-//   fetchTickets(user.id);
+//   await fetchTickets(user.id);
 // });
 
-
 // // ==== CHAT FUNCTIONS ====
-// // (тут залишаємо твої функції, але прибрав дублікати і виправив порядок)
 // async function initChat() {
 //   await fetchChats();
 //   renderTopbar();
@@ -42,7 +207,7 @@
 // // ==== FETCH TICKETS ====
 // async function fetchTickets(clientId) {
 //   try {
-//     const response = await fetch(`/api/ticket/${clientId}`, {
+//     const response = await fetch(`http://localhost:8000/api/ticket/${clientId}`, {
 //       method: "GET",
 //       credentials: "include"
 //     });
@@ -76,7 +241,6 @@
 //     document.getElementById("ticketsList").innerHTML = `<p>Не вдалося завантажити заявки.</p>`;
 //   }
 // }
-
 
 // // ==== TICKET MODAL ====
 // const openModalBtn = document.getElementById("openTicketModal");
@@ -114,7 +278,7 @@
 //   try {
 //     // 1. створення заявки
 //     const payload = { title, description, priority: "medium" };
-//     const res = await fetch("/api/tickets", {
+//     const res = await fetch("http://localhost:8000/api/tickets", {
 //       method: "POST",
 //       headers: { "Content-Type": "application/json" },
 //       credentials: "include",
@@ -135,7 +299,7 @@
 //         formData.append("ticket_id", ticket.id);
 //         formData.append("file", file);
 
-//         await fetch("/api/files/upload", {
+//         await fetch("http://localhost:8000/api/files/upload", {
 //           method: "POST",
 //           credentials: "include",
 //           body: formData
@@ -146,7 +310,7 @@
 //     showToast("✅ Заявка успішно створена!", "success");
 //     ticketForm.reset();
 //     ticketModal.classList.remove("open");
-//     fetchTickets(currentUserId);
+//     await fetchTickets(currentUserId);
 
 //   } catch (err) {
 //     console.error("❌ Помилка при створенні заявки:", err);
@@ -154,67 +318,347 @@
 //   }
 // });
 
-// ==== INIT USER CHECK ====
+
+// // ==== USER MENU ====
+// function initUserMenu(user) {
+//   const btn = document.getElementById("userMenuBtn");
+//   const menu = document.getElementById("userMenu");
+//   const avatar = document.querySelector(".user__avatar");
+
+//   // Встановлюємо ініціали користувача
+//   if (user?.full_name) {
+//     const parts = user.full_name.trim().split(" ");
+//     let initials = parts.map(p => p[0].toUpperCase()).join("");
+//     if (initials.length > 2) initials = initials.slice(0, 2); // максимум 2 літери
+//     avatar.textContent = initials;
+//   }
+
+//   // Клік по кнопці -> відкриваємо/закриваємо меню
+//   btn.addEventListener("click", (e) => {
+//     e.stopPropagation();
+//     const isOpen = menu.classList.contains("open");
+//     menu.classList.toggle("open", !isOpen);
+//     btn.setAttribute("aria-expanded", String(!isOpen));
+//   });
+
+//   // Клік поза меню -> закриваємо
+//   document.addEventListener("click", (e) => {
+//     if (!btn.contains(e.target) && !menu.contains(e.target)) {
+//       menu.classList.remove("open");
+//       btn.setAttribute("aria-expanded", "false");
+//     }
+//   });
+// }
+
+// // ==== INIT APP ====
+// document.addEventListener("DOMContentLoaded", async () => {
+//   // перевірка користувача
+//   const user = await fetchCurrentUser();
+//   if (!user) return;
+
+//   // Ініціалізація меню користувача
+//   initUserMenu(user);
+
+//   // Ініціалізація чату
+//   await initChat();
+
+//   // Завантаження тікетів
+//   await fetchTickets(user.id);
+// });
+
+
+// // ----------------- CHAT =====================
+
+
+// // === Відкриття/закриття чату ===
+// const chatToggle = document.getElementById("chatToggle");
+// const chatWidget = document.getElementById("chatWidget");
+
+// function toggleChat() {
+//   chatWidget.style.display = chatWidget.style.display === "none" ? "block" : "none";
+// }
+
+// chatToggle.addEventListener("click", toggleChat);
+
+// // === Ініціалізація WebSocket ===
+// async function connectChat(chatId) {
+//   currentChatId = chatId;
+//   chatSocket = new WebSocket(`ws://localhost:8000/api/chats/ws/${chatId}/${currentUserId}`);
+
+//   chatSocket.onmessage = function(event) {
+//     const message = JSON.parse(event.data);
+//     addMessageToUI(message);
+//   };
+
+//   chatSocket.onclose = function() {
+//     console.warn("WebSocket закритий");
+//   };
+// }
+
+// // === Відправка повідомлення ===
+// function sendMessage(text, fileUrl = null) {
+//   if (!chatSocket || chatSocket.readyState !== WebSocket.OPEN) return;
+
+//   const payload = {
+//     text: text || (fileUrl ? "📎 Файл" : ""),
+//     author_id: currentUserId,
+//     is_file: !!fileUrl,
+//     file_url: fileUrl
+//   };
+//   chatSocket.send(JSON.stringify(payload));
+// }
+
+// // === Додавання повідомлення на UI ===
+// function addMessageToUI(message) {
+//   const messagesContainer = document.getElementById("chatMessages");
+//   const el = document.createElement("div");
+//   el.classList.add("chat-message");
+//   el.innerHTML = message.is_file
+//     ? `<a href="${message.file_url}" target="_blank">📎 Файл</a>`
+//     : message.text;
+//   messagesContainer.appendChild(el);
+//   messagesContainer.scrollTop = messagesContainer.scrollHeight;
+// }
+
+// // === Обробник форми відправки тексту ===
+// document.getElementById("chatForm").addEventListener("submit", async (e) => {
+//   e.preventDefault();
+//   const input = document.getElementById("messageInput");
+//   if (input.value.trim() !== "") {
+//     sendMessage(input.value.trim());
+//     input.value = "";
+//   }
+// });
+
+// // === Обробник вибору файлу ===
+// document.getElementById("fileInput").addEventListener("change", async (e) => {
+//   const file = e.target.files[0];
+//   if (!file) return;
+
+//   const formData = new FormData();
+//   formData.append("file", file);
+//   formData.append("author_id", currentUserId);
+
+//   const res = await fetch(`http://localhost:8000/api/chats/${currentChatId}/upload`, {
+//     method: "POST",
+//     body: formData
+//   });
+
+//   const message = await res.json();
+//   // надсилаємо через WebSocket для всіх у чаті
+//   sendMessage(null, message.file_url);
+// });
+
+// // === Завантаження попередніх повідомлень ===
+// async function loadMessages(chatId) {
+//   currentChatId = chatId;
+//   const res = await fetch(`http://localhost:8000/api/chats/${chatId}/messages?user_id=${currentUserId}`);
+//   const messages = await res.json();
+//   const messagesContainer = document.getElementById("chatMessages");
+//   messagesContainer.innerHTML = "";
+//   messages.forEach(msg => addMessageToUI(msg));
+// }
+
+// // === Динамічний topbar із чатами ===
+// async function renderTopbar() {
+//   const topbar = document.getElementById("chatTopbar");
+//   const res = await fetch(`http://localhost:8000/api/chats/${currentUserId}`);
+//   const chats = await res.json();
+
+//   topbar.innerHTML = "";
+//   chats.forEach(chat => {
+//     const div = document.createElement("div");
+//     div.classList.add("chat-topbar-item");
+//     const initials = chat.client_id === currentUserId ? chat.master_id : chat.client_id;
+//     div.textContent = initials;
+//     div.addEventListener("click", async () => {
+//       await loadMessages(chat.id);
+//       connectChat(chat.id);
+//       document.getElementById("chatHeader").textContent = `Чат #${chat.id}`;
+//     });
+//     topbar.appendChild(div);
+//   });
+// }
+
+
+
+let currentUserId;
+let chatSocket;
+let currentChatId;
+
+const API_BASE = "http://localhost:8000/api";
+
+// ==== HELPERS ====
+function getInitials(name) {
+  if (!name) return "";
+  const parts = name.trim().split(" ");
+  let initials = parts.map(p => p[0].toUpperCase()).join("");
+  return initials.length > 2 ? initials.slice(0, 2) : initials;
+}
+
+// ==== LOGOUT ====
+function Logout() {
+  fetch("/api/user/auth/logout", { method: "POST", credentials: "include" })
+    .finally(() => window.location.replace("/"));
+}
+
+// ==== FETCH CURRENT USER ====
 async function fetchCurrentUser() {
   try {
-    const res = await fetch("http://localhost:8000/api/user/auth/user", {
-      method: "GET",
-      credentials: "include"
-    });
-
-    if (!res.ok) {
-      // користувач не авторизований або токен недійсний
-      throw new Error("Unauthorized");
-    }
-
+    const res = await fetch(`${API_BASE}/user/auth/user`, { method: "GET", credentials: "include" });
+    if (res.status === 401) throw new Error("Unauthorized");
     const data = await res.json();
     currentUserId = data.id;
+    console.log(currentUserId);
+    
     return data;
   } catch (err) {
     console.warn("❌ Користувач не авторизований:", err);
-    // редірект на логін
-    window.location.replace("http://localhost:3000/"); 
+    window.location.replace("/");
+    return null;
   }
 }
 
-// ==== INIT APP ====
-document.addEventListener("DOMContentLoaded", async () => {
-  // перевірка користувача
-  const user = await fetchCurrentUser();
-  if (!user) return; // якщо редіректнувся, далі код не виконується
+// ==== USER MENU ====
+function initUserMenu(user) {
+  const btn = document.getElementById("userMenuBtn");
+  const menu = document.getElementById("userMenu");
+  const avatar = document.querySelector(".user__avatar");
 
-  // Ініціалізація чату
-  await initChat();
+  avatar.textContent = getInitials(user.full_name);
 
-  // Завантаження тікетів
-  await fetchTickets(user.id);
-});
+  btn.addEventListener("click", e => {
+    e.stopPropagation();
+    menu.classList.toggle("open");
+    btn.setAttribute("aria-expanded", String(menu.classList.contains("open")));
+  });
 
-// ==== CHAT FUNCTIONS ====
-async function initChat() {
-  await fetchChats();
-  renderTopbar();
+  document.addEventListener("click", e => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+    }
+  });
 }
 
-// ==== FETCH TICKETS ====
-async function fetchTickets(clientId) {
+// ==== CHAT ====
+function toggleChat() {
+  const chatWidget = document.getElementById("chatWidget");
+  chatWidget.style.display = chatWidget.style.display === "none" || !chatWidget.style.display ? "block" : "none";
+}
+
+async function connectChat(chatId) {
+  if (chatSocket && chatSocket.readyState === WebSocket.OPEN) chatSocket.close();
+  currentChatId = chatId;
+  chatSocket = new WebSocket(`ws://localhost:8000/api/chats/ws/${chatId}/${currentUserId}`);
+
+  chatSocket.onmessage = event => {
+    const message = JSON.parse(event.data);
+    addMessageToUI(message);
+  };
+  chatSocket.onclose = () => console.warn("WebSocket закритий");
+}
+
+function sendMessage(text, fileUrl = null) {
+  if (!chatSocket || chatSocket.readyState !== WebSocket.OPEN) return;
+  const payload = {
+    text: text || (fileUrl ? "📎 Файл" : ""),
+    author_id: currentUserId,
+    is_file: !!fileUrl,
+    file_url: fileUrl
+  };
+  chatSocket.send(JSON.stringify(payload));
+}
+
+function addMessageToUI(message) {
+  const messagesContainer = document.getElementById("chatMessages");
+  const el = document.createElement("div");
+  el.classList.add("chat-message");
+  el.innerHTML = message.is_file
+    ? `<a href="${message.file_url}" target="_blank">📎 Файл</a>`
+    : message.text;
+  messagesContainer.appendChild(el);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+async function loadMessages(chatId) {
+  currentChatId = chatId;
+  const res = await fetch(`${API_BASE}/chats/${chatId}/messages?user_id=${currentUserId}`)
+  const messages = await res.json();
+  const messagesContainer = document.getElementById("chatMessages");
+  messagesContainer.innerHTML = "";
+  messages.forEach(msg => addMessageToUI(msg));
+}
+
+async function renderTopbar() {
+  const topbar = document.getElementById("chatTopbar");
+  const messagesContainer = document.getElementById("chatMessages");
+  
   try {
-    const response = await fetch(`http://localhost:8000/api/ticket/${clientId}`, {
-      method: "GET",
-      credentials: "include"
+    const res = await fetch(`${API_BASE}/chats/${currentUserId}`);
+    if (!res.ok) throw new Error("Не вдалося завантажити чати");
+    
+    const chats = await res.json();
+    topbar.innerHTML = "";
+
+    // if (!Array.isArray(chats) || chats.length === 0) {
+    //   // Якщо чатів немає
+    //   const emptyDiv = document.createElement("div");
+    //   emptyDiv.classList.add("chat-empty");
+    //   emptyDiv.textContent = "У вас ще немає чатів";
+    //   emptyDiv.style.textAlign = "center";
+    //   emptyDiv.style.padding = "20px";
+    //   topbar.appendChild(emptyDiv);
+    //   return;
+    // }
+
+    chats.forEach(chat => {
+      const div = document.createElement("div");
+      div.classList.add("chat-topbar-item");
+      const otherName = chat.client_id === currentUserId ? chat.master_name : chat.client_name;
+      div.textContent = getInitials(otherName);
+
+      div.addEventListener("click", async () => {
+        await loadMessages(chat.id);
+        connectChat(chat.id);
+        document.getElementById("chatHeader").textContent = `Чат #${chat.id}`;
+      });
+
+      topbar.appendChild(div);
     });
 
-    if (!response.ok) throw new Error("Помилка при отриманні тікетів");
+  } catch (err) {
+    console.error(err);
+    const emptyDiv = document.createElement("div");
+    emptyDiv.classList.add("chat-empty");
+    emptyDiv.textContent = "Упс ¯\_(ツ)_/¯ ,у вас ще немає чату";
+    // emptyDiv.style.display = "flex";
+    // emptyDiv.style.justifyContent = "center";
+    // emptyDiv.style.height = "100%"
+    // emptyDiv.style.alignItems = "center";
+    // emptyDiv.style.textAlign = "center";
+    // emptyDiv.style.padding = "20px";
+    messagesContainer.appendChild(emptyDiv);
+    // topbar.innerHTML = `<div class="chat-empty" style="text-align:center; padding:20px;">Упс ¯\_(ツ)_/¯ ,у вас ще немає чату</div>`;
+  }
+}
 
-    const result = await response.json();
+async function initChat() {
+  await renderTopbar();
+}
+
+// ==== TICKETS ====
+async function fetchTickets(clientId) {
+  try {
+    const res = await fetch(`${API_BASE}/ticket/${clientId}`, { credentials: "include" });
+    if (!res.ok) throw new Error("Помилка при отриманні тікетів");
+
+    const result = await res.json();
     const ticketsContainer = document.getElementById("ticketsList");
     ticketsContainer.innerHTML = "";
 
     if (result.data?.status === 200 && result.data.ticket) {
-      const tickets = Array.isArray(result.data.ticket)
-        ? result.data.ticket
-        : [result.data.ticket];
-
+      const tickets = Array.isArray(result.data.ticket) ? result.data.ticket : [result.data.ticket];
       tickets.forEach(ticket => {
         const ticketCard = document.createElement("div");
         ticketCard.classList.add("ticket-card");
@@ -225,87 +669,138 @@ async function fetchTickets(clientId) {
         `;
         ticketsContainer.appendChild(ticketCard);
       });
-    } else {
-      ticketsContainer.innerHTML = `<p>У вас поки що немає заявок.</p>`;
-    }
-  } catch (error) {
-    console.error("❌ Помилка при отриманні тікетів:", error);
+    } else ticketsContainer.innerHTML = `<p>У вас поки що немає заявок.</p>`;
+  } catch (err) {
+    console.error("❌ Помилка при отриманні тікетів:", err);
     document.getElementById("ticketsList").innerHTML = `<p>Не вдалося завантажити заявки.</p>`;
   }
 }
 
-// ==== TICKET MODAL ====
-const openModalBtn = document.getElementById("openTicketModal");
-const ticketModal = document.getElementById("ticketModal");
-const closeModalBtn = document.getElementById("closeTicketModal");
-const ticketForm = document.getElementById("ticketForm");
+// ==== INIT PAGE ====
+document.addEventListener("DOMContentLoaded", async () => {
+  const user = await fetchCurrentUser();
+  if (!user) return;
 
-openModalBtn.addEventListener("click", e => {
-  e.preventDefault();
-  ticketModal.classList.add("open");
-});
+  initUserMenu(user);
+  await initChat();
+  await fetchTickets(user.id);
 
-closeModalBtn.addEventListener("click", () => {
-  ticketModal.classList.remove("open");
-});
+  // Chat toggle
+  const chatToggleBtn = document.getElementById("chatToggle");
+  chatToggleBtn?.addEventListener("click", toggleChat);
 
-ticketModal.addEventListener("click", e => {
-  if (e.target === ticketModal) {
-    ticketModal.classList.remove("open");
-  }
-});
+  // Chat form
+  const chatForm = document.getElementById("chatForm");
+  chatForm?.addEventListener("submit", async e => {
+    e.preventDefault();
+    const input = document.getElementById("messageInput");
+    if (input.value.trim()) {
+      sendMessage(input.value.trim());
+      input.value = "";
+    }
+  });
 
-ticketForm.addEventListener("submit", async e => {
-  e.preventDefault();
+  // Chat file upload
+  const fileInput = document.getElementById("fileInput");
 
-  const title = ticketForm.title.value.trim();
-  const description = ticketForm.description.value.trim();
-  const files = ticketForm.files.files;
+fileInput?.addEventListener("change", async (e) => {
+  const file = e.target.files[0];
 
-  if (title.length < 3 || description.length < 10) {
-    showToast("Заповніть правильно всі поля!", "error");
+  if (!file) return;
+  if (!currentChatId) {
+    showToast("❌ Спочатку оберіть чат", "error");
     return;
   }
 
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("author_id", currentUserId);
+
+  // Додатково: показати, що файл завантажується
+  const messagesContainer = document.getElementById("chatMessages");
+  const tempMessageEl = document.createElement("div");
+  tempMessageEl.classList.add("chat-message", "loading");
+  tempMessageEl.textContent = `Завантаження ${file.name}...`;
+  messagesContainer.appendChild(tempMessageEl);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
   try {
-    // 1. створення заявки
-    const payload = { title, description, priority: "medium" };
-    const res = await fetch("http://localhost:8000/api/tickets", {
+    const res = await fetch(`${API_BASE}/chats/${currentChatId}/upload`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify(payload)
+      body: formData
     });
 
     if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.detail || "Не вдалося створити заявку");
+      throw new Error(`Не вдалося завантажити файл (${res.status})`);
     }
 
-    const { ticket } = await res.json();
+    const message = await res.json();
 
-    // 2. завантаження файлів
-    if (files.length > 0) {
+    // Видаляємо тимчасове повідомлення і додаємо реальне
+    tempMessageEl.remove();
+    addMessageToUI(message);
+
+    // Надсилаємо через WebSocket всім учасникам
+    sendMessage(null, message.file_url);
+
+  } catch (err) {
+    console.error("❌ Помилка завантаження файлу:", err);
+    tempMessageEl.remove();
+    showToast(err.message, "error");
+  } finally {
+    // Очищуємо input, щоб можна було завантажити той самий файл знову
+    fileInput.value = "";
+  }
+});
+
+  // Ticket modal
+  const openModalBtn = document.getElementById("openTicketModal");
+  const ticketModal = document.getElementById("ticketModal");
+  const closeModalBtn = document.getElementById("closeTicketModal");
+  const ticketForm = document.getElementById("ticketForm");
+
+  openModalBtn?.addEventListener("click", e => {
+    e.preventDefault();
+    ticketModal.classList.add("open");
+  });
+
+  closeModalBtn?.addEventListener("click", () => ticketModal.classList.remove("open"));
+  ticketModal?.addEventListener("click", e => {
+    if (e.target === ticketModal) ticketModal.classList.remove("open");
+  });
+
+  ticketForm?.addEventListener("submit", async e => {
+    e.preventDefault();
+    const title = document.getElementById("ticketTitle").value.trim();
+    const description = document.getElementById("ticketDescription").value.trim();
+    const files = document.getElementById("ticketFiles").files;
+
+    if (title.length < 3 || description.length < 10) {
+      showToast("Заповніть правильно всі поля!", "error");
+      return;
+    }
+
+    try {
+      const payload = { title, description, priority: "medium" };
+      const res = await fetch(`${API_BASE}/tickets`, { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "include", body: JSON.stringify(payload) });
+      if (!res.ok) throw new Error("Не вдалося створити заявку");
+      const { ticket } = await res.json();
+
       for (const file of files) {
         const formData = new FormData();
         formData.append("ticket_id", ticket.id);
         formData.append("file", file);
-
-        await fetch("http://localhost:8000/api/files/upload", {
-          method: "POST",
-          credentials: "include",
-          body: formData
-        });
+        await fetch(`${API_BASE}/files/upload`, { method: "POST", credentials: "include", body: formData });
       }
+
+      showToast("✅ Заявка успішно створена!", "success");
+      ticketForm.reset();
+      ticketModal.classList.remove("open");
+      await fetchTickets(currentUserId);
+
+    } catch (err) {
+      console.error("❌ Помилка при створенні заявки:", err);
+      showToast(err.message, "error");
     }
-
-    showToast("✅ Заявка успішно створена!", "success");
-    ticketForm.reset();
-    ticketModal.classList.remove("open");
-    await fetchTickets(currentUserId);
-
-  } catch (err) {
-    console.error("❌ Помилка при створенні заявки:", err);
-    showToast(err.message, "error");
-  }
+  });
 });

@@ -434,6 +434,16 @@ section {
   height: 100%;
 }
 
+.chat-empty {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #b9b9b9;
+}
+
 /* Горизонтальний sidebar */
 .chat-topbar {
   display: flex;

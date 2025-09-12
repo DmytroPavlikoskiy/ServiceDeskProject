@@ -1,18 +1,31 @@
-from pydantic import BaseModel, Field
-from enum import Enum
 from datetime import datetime
+from pydantic import BaseModel
 from typing import Optional
 
-class ChatBase(BaseModel):
-    title: str = Field(..., examples='Ваш чат с мастером')
-    client_id: int = Field(...)
+class MessageCreate(BaseModel):
+    text: str
+    author_id: int
+    is_file: bool = False
+    file_url: Optional[str] = None
 
-class ChatCreate(ChatBase):
-    pass
- 
-class ChatResponse(ChatBase):
-    id: int = Field(...)    
-    create_date: datetime = Field(..., example='12.03.2025')
+class MessageOut(BaseModel):
+    id: int
+    text: str
+    author_id: int
+    created_at: datetime
+    file_url: Optional[str]
+    is_read: bool
+    is_file: bool
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+class ChatOut(BaseModel):
+    id: int
+    client_id: int
+    master_id: int
+    last_message: Optional[MessageOut]
+    unread_count: int
+
+    class Config:
+        from_attributes = True
