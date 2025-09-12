@@ -1,5 +1,6 @@
 from sqlalchemy import String, Integer, Text, DateTime, ForeignKey, func, BigInteger
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from typing import Optional
 from .db import Base
 
 
@@ -76,6 +77,9 @@ class Message(Base):
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     text: Mapped[str] = mapped_column(Text, nullable=False)
     created_at: Mapped[DateTime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    is_read: Mapped[bool] = mapped_column(default=False)
+    file_url: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    is_file: Mapped[bool] = mapped_column(default=False, nullable=False)
 
     chat_id: Mapped[int] = mapped_column(ForeignKey("chats.id"), nullable=False)
     chat: Mapped["Chat"] = relationship("Chat", back_populates="messages")
