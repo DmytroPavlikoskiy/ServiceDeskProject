@@ -21,3 +21,4 @@ htmlcov/
 
 venv/
 this/
+migrations/
