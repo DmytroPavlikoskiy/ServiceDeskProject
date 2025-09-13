@@ -8,9 +8,6 @@ from backend.routers import auth, tickets
 
 app = FastAPI(title=settings.APP_NAME)
 
-app.include_router(auth.auth_router)
-app.include_router(tickets.ticket_router)
-
 # CORS
 app.add_middleware(
     CORSMiddleware,
@@ -20,3 +17,6 @@ app.add_middleware(
     allow_headers=settings.ALLOW_HEADERS,
 )
 
+
+app.include_router(auth.auth_router)
+app.include_router(tickets.ticket_router)
