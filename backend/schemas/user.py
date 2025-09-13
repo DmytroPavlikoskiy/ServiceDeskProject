@@ -16,13 +16,13 @@ class UserBase(BaseModel):
     role: UserType = Field(..., description="Роль користувача")
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # --- Схема для відповіді API про користувача ---
 class User(UserBase):
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # --- Схема для створення нового користувача (реєстрація) ---
@@ -46,11 +46,11 @@ class UserUpdate(BaseModel):
     email: Optional[EmailStr] = Field(None, description="Електронна пошта")
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class AdminUserUpdate(UserUpdate):
     role: Optional[UserType] = Field(None, description="Роль користувача")
 
     class Config:
-        orm_mode = True
+        from_attributes = True

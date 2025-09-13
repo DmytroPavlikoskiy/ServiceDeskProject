@@ -17,10 +17,10 @@ class TicketPriority(str, Enum):
 
 class TicketBase(BaseModel):
     title: str = Field(..., description="заголовок", example="не работает айфон")
-    description: Optional[str] = Field(..., example='Айфон не грузится, доходит до значка яблока и выключается')
+    description: str = Field(..., example="Айфон не грузится, доходит до значка яблока и выключается")
     status: TicketStatus = TicketStatus.open
     priority: TicketPriority = TicketPriority.medium
-    user_id: int 
+    client_id: int
     
 
 class TicketCreate(TicketBase):
@@ -29,13 +29,14 @@ class TicketCreate(TicketBase):
 class TicketUpdate(BaseModel):
     status: TicketStatus = Field(..., description="new path's status")
     
-class TicketResponse(TicketBase):
+class TicketResponse(BaseModel):
     id: int
-    user_id: int
     title: str
+    description: str
     status: TicketStatus
-    created_date: datetime  
+    priority: TicketPriority
+    client_id: int
+    created_at: datetime  
 
     class Config:
-        orm_mode = True
-    
+        from_attributes = True

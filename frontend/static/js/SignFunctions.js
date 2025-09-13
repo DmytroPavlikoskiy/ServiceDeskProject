@@ -108,7 +108,7 @@ const tabs = document.querySelectorAll(".auth__tab");
         showToast("Пароль має бути мінімум 6 символів.", "error");
         return;
       }
-      if (password[0] == password[0].toUpperCase()) {
+      if (password[0] !== password[0].toUpperCase()) {
         showToast("Пароль має починатись з великої літери.", "error");
         return;
       }

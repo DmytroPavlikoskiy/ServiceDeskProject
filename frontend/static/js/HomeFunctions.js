@@ -781,16 +781,18 @@ fileInput?.addEventListener("change", async (e) => {
     }
 
     try {
-      const payload = { title, description, priority: "medium" };
-      const res = await fetch(`${API_BASE}/tickets`, { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "include", body: JSON.stringify(payload) });
+      const payload = { title, description, client_id: currentUserId};
+      console.log(payload);
+      
+      const res = await fetch(`${API_BASE}/tickets/create/ticket`, { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "include", body: JSON.stringify(payload) });
       if (!res.ok) throw new Error("Не вдалося створити заявку");
-      const { ticket } = await res.json();
+      const ticket = await res.json();
 
       for (const file of files) {
         const formData = new FormData();
         formData.append("ticket_id", ticket.id);
         formData.append("file", file);
-        await fetch(`${API_BASE}/files/upload`, { method: "POST", credentials: "include", body: formData });
+        await fetch(`${API_BASE}/tickets/files/upload`, { method: "POST", credentials: "include", body: formData });
       }
 
       showToast("✅ Заявка успішно створена!", "success");
@@ -802,5 +804,76 @@ fileInput?.addEventListener("change", async (e) => {
       console.error("❌ Помилка при створенні заявки:", err);
       showToast(err.message, "error");
     }
+  });
+});
+
+
+// =================== FILES PREVIEW ===================
+document.addEventListener("DOMContentLoaded", () => {
+  const fileInput = document.getElementById("ticketFiles");
+  const filesContainer = document.querySelector(".files_control");
+
+  // Масив вибраних файлів
+  let selectedFiles = [];
+
+  fileInput.addEventListener("change", (e) => {
+    const newFiles = Array.from(e.target.files);
+
+    // Додаємо у масив, уникаючи дублікатів по name+size
+    newFiles.forEach(file => {
+      if (!selectedFiles.some(f => f.name === file.name && f.size === file.size)) {
+        selectedFiles.push(file);
+      }
+    });
+
+    renderFiles();
+  });
+
+  // Рендер прев’ю
+  function renderFiles() {
+    filesContainer.innerHTML = "";
+
+    if (selectedFiles.length === 0) {
+      filesContainer.style.display = "none";
+      return;
+    } else {
+      filesContainer.style.display = "flex";
+    }
+
+    selectedFiles.forEach((file, index) => {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("file-preview");
+
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.alt = file.name;
+
+        const removeBtn = document.createElement("button");
+        removeBtn.classList.add("remove-btn");
+        removeBtn.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+
+        removeBtn.addEventListener("click", () => {
+          selectedFiles.splice(index, 1);
+          renderFiles();
+        });
+
+        wrapper.appendChild(img);
+        wrapper.appendChild(removeBtn);
+        filesContainer.appendChild(wrapper);
+      };
+
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Хак — щоб при відправці форми відправлялись вибрані файли
+  const ticketForm = document.getElementById("ticketForm");
+  ticketForm.addEventListener("submit", (e) => {
+    const dataTransfer = new DataTransfer();
+    selectedFiles.forEach(f => dataTransfer.items.add(f));
+    fileInput.files = dataTransfer.files;
   });
 });
