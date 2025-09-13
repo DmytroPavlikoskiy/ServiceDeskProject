@@ -1,0 +1,27 @@
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from typing import List
+
+app = FastAPI()
+
+class Ticket(BaseModel):
+    id: int
+    title: str
+    status: str
+
+fake_tickets_db = [
+    {"id": 1, "title": "Ticket 1", "status": "open"},
+    {"id": 2, "title": "Ticket 2", "status": "closed"},
+    {"id": 3, "title": "Ticket 3", "status": "open"},
+]
+
+@app.get("/ticket/{status}", response_model=List[Ticket])
+async def get_tickets(status: str):
+    tickets = [t for t in fake_tickets_db if t["status"].lower() == status.lower()]
+    if not tickets:
+        raise HTTPException(status_code=404, detail="Tickets not found")
+    return tickets
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
