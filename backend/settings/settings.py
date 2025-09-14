@@ -27,6 +27,7 @@ class Settings(BaseSettings):
 
     #TELEGRAM API
     TELEGRAM_BOT_TOKEN: str | None = None
+    BOT_SERVICE_SECRET: str = Field(..., env="BOT_SERVICE_SECRET")
 
     # Frontend
     FRONTEND_PORT: int = Field(3000, env="PORT")

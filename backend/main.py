@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.database.models import Ticket
 from backend.database.dependencies import get_db
 from backend.settings.settings import settings
-from backend.routers import auth, tickets, chat
+from backend.routers import auth, tickets, chat, websocket
 from fastapi.staticfiles import StaticFiles
 import os
 
@@ -27,3 +27,4 @@ app.add_middleware(
 app.include_router(auth.auth_router)
 app.include_router(tickets.ticket_router)
 app.include_router(chat.chat_router)
+app.include_router(websocket.ws_router)

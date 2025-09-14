@@ -25,14 +25,14 @@ class ConnectionManager:
 websocket_manager = ConnectionManager()
 
 # WebSocket router (can be mounted in your routers)
-from fastapi import APIRouter
-router = APIRouter()
+# from fastapi import APIRouter
+# router = APIRouter()
 
-@router.websocket('/api/ws/notifications/{user_id}')
-async def notifications_ws(websocket: WebSocket, user_id: int):
-    await websocket_manager.connect(user_id, websocket)
-    try:
-        while True:
-            await websocket.receive_text()
-    except WebSocketDisconnect:
-        websocket_manager.disconnect(user_id)
+# @router.websocket('/api/ws/notifications/{user_id}')
+# async def notifications_ws(websocket: WebSocket, user_id: int):
+#     await websocket_manager.connect(user_id, websocket)
+#     try:
+#         while True:
+#             await websocket.receive_text()
+#     except WebSocketDisconnect:
+#         websocket_manager.disconnect(user_id)
