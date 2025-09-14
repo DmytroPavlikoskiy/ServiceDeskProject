@@ -51,7 +51,7 @@
           <span class="user__caret"><i class="fa-solid fa-chevron-down"></i></span>
         </button>
         <div class="user-menu" id="userMenu" role="menu">
-          <a class="user-menu__item" href="/tickets"><i class="fa-solid fa-list-check"></i> Мої заявки</a>
+          <a class="user-menu__item" onclick="openTicketsSidebar(this);"><i class="fa-solid fa-list-check"></i> Мої заявки</a>
           <a class="user-menu__item" href="/profile"><i class="fa-solid fa-user"></i> Профіль</a>
           <div class="user-menu__divider"></div>
           <button class="user-menu__item user-menu__danger" onclick="Logout()">
@@ -62,9 +62,18 @@
     </div>
   </header>
 
-  <!-- ===== User Tickets List ===== -->
 
-  <div id="ticketsList"></div>
+
+<!-- ===== Tickets Sidebar ===== -->
+<div id="ticketsSidebar" class="tickets-sidebar">
+  <div class="tickets-sidebar__header">
+    <h2>Мої заявки</h2>
+    <a id="closeTicketsSidebar"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="tickets-sidebar__content" id="ticketsSidebarContent">
+    <!-- Список заявок буде тут -->
+  </div>
+</div>
 
   <!-- ===== Hero ===== -->
   <section class="hero">
@@ -74,7 +83,7 @@
         <p>ServiceDesk Plus — платформа для заявок та комунікації з майстрами. Створюй тікет за хвилину, відстежуй виконання та спілкуйся вбудованим чатом.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" id="openTicketModal" ><i class="fa-solid fa-plus"></i> Створити заявку</a>
-          <a class="btn btn--ghost" ><i class="fa-solid fa-list-check"></i> Мої заявки</a>
+          <a class="btn btn--ghost" onclick="openTicketsSidebar();"><i class="fa-solid fa-list-check"></i> Мої заявки</a>
         </div>
         <div class="hero__meta">
           <div><i class="fa-solid fa-bolt"></i> Відповідь за 12 хв</div>

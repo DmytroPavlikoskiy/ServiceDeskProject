@@ -914,3 +914,80 @@ section {
 .modal-content::-webkit-scrollbar-thumb:hover {
   background: rgba(79,70,229,0.7);
 }
+
+/* ===== Tickets Sidebar ===== */
+.tickets-sidebar {
+  position: fixed;
+  top: 70px; /* висота хедера */
+  right: -400px; /* приховане з правого краю */
+  width: 400px;
+  height: calc(100% - 70px);
+  background: #fff;
+  box-shadow: -3px 0 10px rgba(0,0,0,0.2);
+  transition: right 0.4s ease;
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+.tickets-sidebar.open {
+  right: 0;
+}
+
+.tickets-sidebar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tickets-sidebar__header a {
+  cursor: pointer;
+}
+
+.tickets-sidebar__content {
+  padding: 10px 15px;
+}
+
+.ticket-card-sidebar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.ticket-card-sidebar img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.ticket-card-sidebar .ticket-info {
+  flex: 1;
+}
+
+.ticket-card-sidebar .ticket-info h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ticket-card-sidebar .ticket-info .status {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.status.open { background: #3498db; }
+.status.in_progress { background: #f39c12; }
+.status.closed { background: #2ecc71; }

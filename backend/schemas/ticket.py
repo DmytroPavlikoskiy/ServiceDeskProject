@@ -1,9 +1,7 @@
 from pydantic import BaseModel, Field
-from typing import Optional, List
-from datetime import datetime
+from typing import List
 from enum import Enum
-
-# Днепр офисы и Одесса Мама делают! daaaaa:)
+from backend.schemas.file import FileResponse
 
 class TicketStatus(str, Enum):
     open = 'open'
@@ -16,27 +14,24 @@ class TicketPriority(str, Enum):
     high = 'high'
 
 class TicketBase(BaseModel):
-    title: str = Field(..., description="заголовок", example="не работает айфон")
-    description: str = Field(..., example="Айфон не грузится, доходит до значка яблока и выключается")
+    title: str = Field(..., description="заголовок", example="не працює айфон")
+    description: str = Field(..., example="Айфон не грузиться, доходит до значка яблука і вимикається")
     status: TicketStatus = TicketStatus.open
     priority: TicketPriority = TicketPriority.medium
     client_id: int
-    
 
 class TicketCreate(TicketBase):
     pass
 
 class TicketUpdate(BaseModel):
     status: TicketStatus = Field(..., description="new path's status")
-    
+
 class TicketResponse(BaseModel):
     id: int
     title: str
     description: str
     status: TicketStatus
-    priority: TicketPriority
-    client_id: int
-    created_at: datetime  
+    files: List[FileResponse] = []
 
     class Config:
         from_attributes = True
