@@ -506,14 +506,14 @@ function Logout() {
 async function fetchCurrentUser() {
   try {
     const res = await fetch(`${API_BASE}/user/auth/user`, { method: "GET", credentials: "include" });
-    if (res.status === 401) throw new Error("Unauthorized");
+    if (res.status === 401 || res.status === 404) throw new Error("Unauthorized");
     const data = await res.json();
     currentUserId = data.id;
     console.log(currentUserId);
     
     return data;
   } catch (err) {
-    console.warn("❌ Користувач не авторизований:", err);
+    console.warn("Користувач не авторизований:", err);
     window.location.replace("/");
     return null;
   }
@@ -601,17 +601,6 @@ async function renderTopbar() {
     const chats = await res.json();
     topbar.innerHTML = "";
 
-    // if (!Array.isArray(chats) || chats.length === 0) {
-    //   // Якщо чатів немає
-    //   const emptyDiv = document.createElement("div");
-    //   emptyDiv.classList.add("chat-empty");
-    //   emptyDiv.textContent = "У вас ще немає чатів";
-    //   emptyDiv.style.textAlign = "center";
-    //   emptyDiv.style.padding = "20px";
-    //   topbar.appendChild(emptyDiv);
-    //   return;
-    // }
-
     chats.forEach(chat => {
       const div = document.createElement("div");
       div.classList.add("chat-topbar-item");
@@ -632,48 +621,12 @@ async function renderTopbar() {
     const emptyDiv = document.createElement("div");
     emptyDiv.classList.add("chat-empty");
     emptyDiv.textContent = "Упс ¯\_(ツ)_/¯ ,у вас ще немає чату";
-    // emptyDiv.style.display = "flex";
-    // emptyDiv.style.justifyContent = "center";
-    // emptyDiv.style.height = "100%"
-    // emptyDiv.style.alignItems = "center";
-    // emptyDiv.style.textAlign = "center";
-    // emptyDiv.style.padding = "20px";
     messagesContainer.appendChild(emptyDiv);
-    // topbar.innerHTML = `<div class="chat-empty" style="text-align:center; padding:20px;">Упс ¯\_(ツ)_/¯ ,у вас ще немає чату</div>`;
   }
 }
 
 async function initChat() {
   await renderTopbar();
-}
-
-// ==== TICKETS ====
-async function fetchTickets(clientId) {
-  try {
-    const res = await fetch(`${API_BASE}/ticket/${clientId}`, { credentials: "include" });
-    if (!res.ok) throw new Error("Помилка при отриманні тікетів");
-
-    const result = await res.json();
-    const ticketsContainer = document.getElementById("ticketsList");
-    ticketsContainer.innerHTML = "";
-
-    if (result.data?.status === 200 && result.data.ticket) {
-      const tickets = Array.isArray(result.data.ticket) ? result.data.ticket : [result.data.ticket];
-      tickets.forEach(ticket => {
-        const ticketCard = document.createElement("div");
-        ticketCard.classList.add("ticket-card");
-        ticketCard.innerHTML = `
-          <h3>${ticket.title}</h3>
-          <p>${ticket.description || "Без опису"}</p>
-          <span class="status">Статус: ${ticket.status}</span>
-        `;
-        ticketsContainer.appendChild(ticketCard);
-      });
-    } else ticketsContainer.innerHTML = `<p>У вас поки що немає заявок.</p>`;
-  } catch (err) {
-    console.error("❌ Помилка при отриманні тікетів:", err);
-    document.getElementById("ticketsList").innerHTML = `<p>Не вдалося завантажити заявки.</p>`;
-  }
 }
 
 // ==== INIT PAGE ====
@@ -683,7 +636,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   initUserMenu(user);
   await initChat();
-  await fetchTickets(user.id);
 
   // Chat toggle
   const chatToggleBtn = document.getElementById("chatToggle");
@@ -708,7 +660,7 @@ fileInput?.addEventListener("change", async (e) => {
 
   if (!file) return;
   if (!currentChatId) {
-    showToast("❌ Спочатку оберіть чат", "error");
+    showToast("Спочатку оберіть чат", "error");
     return;
   }
 
@@ -744,7 +696,7 @@ fileInput?.addEventListener("change", async (e) => {
     sendMessage(null, message.file_url);
 
   } catch (err) {
-    console.error("❌ Помилка завантаження файлу:", err);
+    console.error("Помилка завантаження файлу:", err);
     tempMessageEl.remove();
     showToast(err.message, "error");
   } finally {
@@ -792,13 +744,12 @@ fileInput?.addEventListener("change", async (e) => {
         const formData = new FormData();
         formData.append("ticket_id", ticket.id);
         formData.append("file", file);
-        await fetch(`${API_BASE}/tickets/files/upload`, { method: "POST", credentials: "include", body: formData });
+        await fetch(`${API_BASE}/tickets/file/upload`, { method: "POST", credentials: "include", body: formData });
       }
 
-      showToast("✅ Заявка успішно створена!", "success");
+      showToast("Заявка успішно створена!", "success");
       ticketForm.reset();
       ticketModal.classList.remove("open");
-      await fetchTickets(currentUserId);
 
     } catch (err) {
       console.error("❌ Помилка при створенні заявки:", err);
@@ -876,4 +827,43 @@ document.addEventListener("DOMContentLoaded", () => {
     selectedFiles.forEach(f => dataTransfer.items.add(f));
     fileInput.files = dataTransfer.files;
   });
+});
+
+
+async function openTicketsSidebar() {
+  const sidebar = document.getElementById("ticketsSidebar");
+  sidebar.classList.add("open");
+  const res = await fetch(`${API_BASE}/tickets/user/get_tickets/${currentUserId}`, { credentials: "include" });
+  const data = await res.json();
+  const tickets = data.data.tickets || [];
+
+  const container = document.getElementById("ticketsSidebarContent");
+  container.innerHTML = "";
+
+  if (!tickets.length) {
+    container.innerHTML = "<p>У вас поки що немає заявок.</p>";
+    return;
+  }
+
+  tickets.forEach(ticket => {
+    const div = document.createElement("div");
+    div.classList.add("ticket-card-sidebar");
+
+    const imgSrc = ticket.photos.length 
+  ? `http://localhost:8000${ticket.photos[0]}` 
+  : "https://via.placeholder.com/60";
+    div.innerHTML = `
+      <img src="${imgSrc}" alt="${ticket.title}">
+      <div class="ticket-info">
+        <h4>${ticket.title}</h4>
+        <span class="status ${ticket.status}">${ticket.status.replace("_", " ").toUpperCase()}</span>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+
+document.getElementById("closeTicketsSidebar").addEventListener("click", () => {
+  document.getElementById("ticketsSidebar").classList.remove("open");
 });

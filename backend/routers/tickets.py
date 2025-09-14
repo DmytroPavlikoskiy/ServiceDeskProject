@@ -4,6 +4,7 @@ from passlib.context import CryptContext
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 from typing import List
+from sqlalchemy.orm import joinedload
 import shutil
 import os
 
@@ -94,8 +95,25 @@ async def get_ticket(ticket_id: int, db: Session = Depends(get_db)):
 
 
 @ticket_router.get("/user/get_tickets/{client_id}")
-async def get_tickets(client_id: int, db: Session = Depends(get_db), response_model=List[TicketResponse]):
-    tickets = db.query(Ticket).filter_by(client_id=client_id).all()
+async def get_tickets(client_id: int, db: Session = Depends(get_db)):
+    tickets = (
+        db.query(Ticket)
+        .options(joinedload(Ticket.files))  # Одразу підвантажуємо файли
+        .filter_by(client_id=client_id)
+        .all()
+    )
+
     if not tickets:
-        return {"data": {"status": 404, "message": "Tickets not found!!!"}}
-    return tickets
+        return {"data": {"status": 404, "message": "Tickets not found"}}
+
+    result = []
+    for ticket in tickets:
+        result.append({
+            "id": ticket.id,
+            "title": ticket.title,
+            "description": ticket.description,
+            "status": ticket.status,
+            "photos": [file.url for file in ticket.files]
+        })
+    print(result)
+    return {"data": {"status": 200, "tickets": result}}

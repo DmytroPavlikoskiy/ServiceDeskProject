@@ -22,3 +22,4 @@ htmlcov/
 venv/
 this/
 migrations/
+migrations/version/
