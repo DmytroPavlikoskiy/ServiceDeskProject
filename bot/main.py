@@ -29,7 +29,7 @@ async def reg_log(message: Message):
         )
 
 
-async def register(telegram_id, email, full_name):
+async def register(telegram_id, email, full_name, pa):
     if (telegram_id, email, full_name):
         payload = {
             "telegram_id": telegram_id,
