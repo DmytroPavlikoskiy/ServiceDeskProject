@@ -1,68 +1,39 @@
 from aiogram import Bot, Dispatcher, F
 import asyncio
 from aiogram.filters import CommandStart
-from aiogram.fsm.context import FSMContext
 from aiogram.types import (Message, ReplyKeyboardMarkup, KeyboardButton)
-from config import TELEGRAM_BOT_API
+from bot.config import TELEGRAM_BOT_API, BOT_SERVICE_SECRET
 from aiogram.fsm.storage.memory import MemoryStorage
-from aiogram.fsm.state import StatesGroup, State
 import aiohttp
 import json
+from typing import Dict
+from bot.routers import register_routers, login_router, main_router
+from bot.redis.redis_proccess import r
+from bot.tasks.listen_new_ticket_task import listen_new_tickets
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+    handlers=[
+        logging.FileHandler("bot.log"),
+        logging.StreamHandler()
+    ]
+)
+
+logger = logging.getLogger("bot_logger")
+
 
 bot = Bot(token=TELEGRAM_BOT_API)
-dp = Dispatcher(bot, storage=MemoryStorage())
-
-class RegisterForm():
-    telegram_id = int
-    email = str
-    full_name = str
-
-@dp.message(CommandStart)
-async def reg_log(message: Message):
-    keyboard = ReplyKeyboardMarkup(keyboard=[
-        [KeyboardButton(text="Login")],
-        [KeyboardButton(text="Register")]
-    ], resize_keyboard=True)
-    await message.answer(
-        text=f"Привіт {message.from_user.username}, бажаєте зареєструватись ?\nЧи ви вже в нас не вперше:)",
-        reply_markup=keyboard
-        )
+dp = Dispatcher(storage=MemoryStorage())
 
 
-async def register(telegram_id, email, full_name, pa):
-    if (telegram_id, email, full_name):
-        payload = {
-            "telegram_id": telegram_id,
-            "email": email,
-            "full_name": full_name
-        }
-        json_payload = json.dumps(payload)
-        async with aiohttp.ClientSession() as session:
-            async with session.post(url="http://127.0.0.1:8000/api/user/register", json=json_payload) as res:
-                print(res.json())
-            
-
-
-@dp.message(F.text == "Register")
-async def register(message: Message, state: FSMContext):
-    await message.answer("Введіть вашу пошту; ")
-    await state.set_state(RegisterForm.email)
-
-
-@dp.message(RegisterForm.email)
-async def process_email(message: Message, state: FSMContext):
-    await state.update_data(email=message.text)
-    await message.answer("Введіть ваше повне імя: ")
-    await state.set_state(RegisterForm.full_name)
-
-@dp.message(RegisterForm.full_name)
-async def process_full_name(message: Message, state: FSMContext):
-    await state.update_data(full_name=message.text)
-    await message.answer("Регістрація виконана")
-    
-    
 
 async def main():
+    dp.include_router(register_routers.register_router)
+    dp.include_router(login_router.login_router)
+    dp.include_router(main_router.main_router)
+    asyncio.create_task(listen_new_tickets(bot))
     await dp.start_polling(bot)
 
 

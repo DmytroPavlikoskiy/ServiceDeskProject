@@ -7,7 +7,8 @@ from typing import List
 from sqlalchemy.orm import joinedload
 import shutil
 import os
-
+import redis
+import json
 
 from backend.schemas.file import File as FileSchema
 from backend.database.models import File as  FileModel, Ticket
@@ -18,6 +19,8 @@ from backend.settings.settings import settings
 
 
 ticket_router = APIRouter(prefix="/api/tickets", tags=["Tickets"])
+
+r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
 
 
 @ticket_router.post("/file/upload", response_model=FileSchema)
@@ -80,6 +83,13 @@ async def create_ticket(ticket: TicketCreate, db: Session = Depends(get_db)):
     db.add(new_ticket)
     db.commit()
     db.refresh(new_ticket)
+
+    r.publish("new_ticket_channel", json.dumps({
+        "ticket_id": new_ticket.id,
+        "title": new_ticket.title,
+        "description": new_ticket.description,
+        "client_id": new_ticket.client_id
+    }))
 
     return new_ticket
     
