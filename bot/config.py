@@ -1,6 +1,5 @@
-from dotenv import load_dotenv
-import os
+from backend.settings.settings import settings
 
-load_dotenv()
 
-TELEGRAM_BOT_API = os.getenv("")
+TELEGRAM_BOT_API = settings.TELEGRAM_BOT_TOKEN
+BOT_SERVICE_SECRET = settings.BOT_SERVICE_SECRET

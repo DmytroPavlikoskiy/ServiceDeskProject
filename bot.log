@@ -1,0 +1,191 @@
+2025-09-15 20:13:56,692 | INFO | aiogram.dispatcher | Start polling
+2025-09-15 20:13:56,698 | ERROR | asyncio | Task exception was never retrieved
+future: <Task finished name='Task-2' coro=<listen_new_tickets() done, defined at /Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/bot/tasks/listen_new_ticket_task.py:23> exception=ConnectionError('Error 61 connecting to localhost:6379. Connection refused.')>
+Traceback (most recent call last):
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/redis/connection.py", line 389, in connect_check_health
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/redis/retry.py", line 105, in call_with_retry
+    return do()
+           ^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/redis/connection.py", line 390, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/redis/connection.py", line 803, in _connect
+    raise err
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/redis/connection.py", line 787, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/bot/tasks/listen_new_ticket_task.py", line 25, in listen_new_tickets
+    pubsub.subscribe("new_ticket_channel")
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/redis/client.py", line 1030, in subscribe
+    ret_val = self.execute_command("SUBSCRIBE", *new_channels.keys())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/redis/client.py", line 860, in execute_command
+    self.connection = self.connection_pool.get_connection()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/redis/utils.py", line 195, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/redis/connection.py", line 1533, in get_connection
+    connection.connect()
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/redis/connection.py", line 380, in connect
+    self.connect_check_health(check_health=True)
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/redis/connection.py", line 397, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-15 20:14:02,219 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:16:37,404 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:16:37,408 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:16:37,408 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-15 20:16:37,554 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:19:56,615 | INFO | aiogram.dispatcher | Start polling
+2025-09-15 20:19:56,619 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-15 20:19:56,802 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:38:24,370 | INFO | aiogram.event | Update id=136329812 is not handled. Duration 3 ms by bot id=8295568530
+2025-09-15 20:38:24,371 | ERROR | aiogram.event | Cause exception while process update id=136329812 by bot id=8295568530
+TypeError: object ReplyKeyboardMarkup can't be used in 'await' expression
+Traceback (most recent call last):
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/bot/main.py", line 42, in reg_log
+    reply_markup=await sign_keyborad()
+                 ^^^^^^^^^^^^^^^^^^^^^
+TypeError: object ReplyKeyboardMarkup can't be used in 'await' expression
+2025-09-15 20:39:00,373 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:39:00,377 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:39:00,378 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-15 20:39:00,521 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:39:03,324 | INFO | aiogram.dispatcher | Start polling
+2025-09-15 20:39:03,329 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-15 20:39:03,472 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:39:08,379 | INFO | aiogram.event | Update id=136329813 is handled. Duration 181 ms by bot id=8295568530
+2025-09-15 20:39:17,459 | INFO | aiogram.event | Update id=136329814 is handled. Duration 67 ms by bot id=8295568530
+2025-09-15 20:39:33,109 | INFO | aiogram.event | Update id=136329815 is handled. Duration 230 ms by bot id=8295568530
+2025-09-15 20:41:50,586 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:41:50,589 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:41:50,590 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-15 20:41:50,775 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:42:19,297 | INFO | aiogram.dispatcher | Start polling
+2025-09-15 20:42:19,301 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-15 20:42:19,423 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:42:27,155 | INFO | aiogram.event | Update id=136329816 is handled. Duration 242 ms by bot id=8295568530
+2025-09-15 20:42:28,670 | INFO | aiogram.event | Update id=136329817 is handled. Duration 77 ms by bot id=8295568530
+2025-09-15 20:42:49,894 | INFO | aiogram.event | Update id=136329818 is handled. Duration 158 ms by bot id=8295568530
+2025-09-15 20:42:51,061 | INFO | aiogram.event | Update id=136329819 is handled. Duration 106 ms by bot id=8295568530
+2025-09-15 20:43:32,597 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:43:32,599 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:43:32,599 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-15 20:43:32,771 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:43:36,598 | INFO | aiogram.dispatcher | Start polling
+2025-09-15 20:43:36,601 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-15 20:43:36,724 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:43:47,941 | INFO | aiogram.event | Update id=136329820 is handled. Duration 175 ms by bot id=8295568530
+2025-09-15 20:43:49,615 | INFO | aiogram.event | Update id=136329821 is handled. Duration 52 ms by bot id=8295568530
+2025-09-15 20:44:16,072 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:44:16,076 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:44:16,077 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-15 20:44:16,204 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:54:34,574 | INFO | aiogram.dispatcher | Start polling
+2025-09-15 20:54:34,580 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-15 20:54:34,756 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:54:43,435 | INFO | aiogram.event | Update id=136329822 is handled. Duration 264 ms by bot id=8295568530
+2025-09-15 20:54:45,558 | INFO | aiogram.event | Update id=136329823 is handled. Duration 131 ms by bot id=8295568530
+2025-09-15 20:55:04,580 | INFO | aiogram.event | Update id=136329824 is handled. Duration 91 ms by bot id=8295568530
+2025-09-15 20:55:11,264 | INFO | aiogram.event | Update id=136329825 is handled. Duration 69 ms by bot id=8295568530
+2025-09-15 20:55:27,599 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:55:27,601 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:55:27,602 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-15 20:55:27,747 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 20:55:30,722 | INFO | aiogram.dispatcher | Start polling
+2025-09-15 20:55:30,725 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-15 20:55:30,843 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 20:55:32,971 | INFO | aiogram.event | Update id=136329826 is handled. Duration 175 ms by bot id=8295568530
+2025-09-15 20:55:33,977 | INFO | aiogram.event | Update id=136329827 is handled. Duration 77 ms by bot id=8295568530
+2025-09-15 20:55:44,426 | INFO | aiogram.event | Update id=136329828 is handled. Duration 70 ms by bot id=8295568530
+2025-09-15 20:55:49,539 | INFO | aiogram.event | Update id=136329829 is handled. Duration 490 ms by bot id=8295568530
+2025-09-15 20:56:56,285 | INFO | listen_new_tickets | 📨 New ticket received: 5 from client 3
+2025-09-15 20:56:56,325 | ERROR | listen_new_tickets | ❌ Failed to parse JSON from /get_masters: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='http://127.0.0.1:8000/api/user/get_masters'
+2025-09-15 20:56:56,325 | ERROR | listen_new_tickets | ❌ Something went wrong! Status: 500
+2025-09-15 21:05:49,888 | INFO | listen_new_tickets | 📨 New ticket received: 6 from client 3
+2025-09-15 21:05:49,917 | ERROR | listen_new_tickets | ❌ Failed to parse JSON from /get_masters: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='http://127.0.0.1:8000/api/user/get_masters'
+2025-09-15 21:05:49,917 | ERROR | listen_new_tickets | ❌ Something went wrong! Status: 500
+2025-09-15 21:09:18,744 | INFO | listen_new_tickets | 📨 New ticket received: 7 from client 3
+2025-09-15 21:09:18,786 | ERROR | listen_new_tickets | ❌ Failed to send message to master 7128321509: BaseModel.__init__() takes 1 positional argument but 2 were given
+2025-09-15 21:22:33,460 | INFO | listen_new_tickets | 📨 New ticket received: 8 from client 3
+2025-09-15 21:22:33,472 | ERROR | listen_new_tickets | ❌ Failed to send message to master 7128321509: BaseModel.__init__() takes 1 positional argument but 2 were given
+2025-09-15 21:27:17,897 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 21:27:17,900 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 21:27:17,900 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-15 21:27:18,054 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 21:27:21,345 | INFO | aiogram.dispatcher | Start polling
+2025-09-15 21:27:21,350 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-15 21:27:21,566 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 21:28:04,999 | INFO | listen_new_tickets | 📨 New ticket received: 9 from client 3
+2025-09-15 21:28:05,011 | INFO | listen_new_tickets | [{'id': 2, 'telegram_id': 7128321509, 'email': 'master123@gmail.com', 'full_name': 'Master Dima', 'role': 'master'}]
+2025-09-15 21:28:05,011 | ERROR | listen_new_tickets | ❌ Failed to send message to master 7128321509: BaseModel.__init__() takes 1 positional argument but 2 were given
+2025-09-15 21:39:29,969 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 21:39:29,973 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 21:39:29,974 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-15 21:39:30,118 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 21:39:32,796 | INFO | aiogram.dispatcher | Start polling
+2025-09-15 21:39:32,800 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-15 21:39:32,935 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 21:40:08,636 | INFO | listen_new_tickets | 📨 New ticket received: 10 from client 3
+2025-09-15 21:40:08,649 | INFO | listen_new_tickets | [{'id': 2, 'telegram_id': 7128321509, 'email': 'master123@gmail.com', 'full_name': 'Master Dima', 'role': 'master'}]
+2025-09-15 21:40:08,649 | ERROR | listen_new_tickets | ❌ Failed to send message to master 7128321509: BaseModel.__init__() takes 1 positional argument but 2 were given
+2025-09-15 21:46:12,712 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 21:46:12,715 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 21:46:12,716 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-15 21:46:12,877 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 21:46:16,386 | INFO | aiogram.dispatcher | Start polling
+2025-09-15 21:46:16,389 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-15 21:46:18,087 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 21:46:50,091 | INFO | listen_new_tickets | 📨 New ticket received: 11 from client 3
+2025-09-15 21:46:50,116 | INFO | listen_new_tickets | [{'id': 2, 'telegram_id': 7128321509, 'email': 'master123@gmail.com', 'full_name': 'Master Dima', 'role': 'master'}]
+2025-09-15 21:46:50,632 | INFO | listen_new_tickets | ✅ Ticket 11 sent to master 7128321509
+2025-09-15 21:47:24,672 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-15 21:47:24,675 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-15 21:47:24,675 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-15 21:47:24,844 | WARNING | aiogram.dispatcher | Received SIGINT signal
