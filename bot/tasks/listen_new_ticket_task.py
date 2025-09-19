@@ -6,6 +6,7 @@ from bot.redis.redis_proccess import r
 from bot.config import BOT_SERVICE_SECRET
 import logging
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from bot.redis.redis_proccess import save_chat_info, get_chat_info_data
 
 logger = logging.getLogger("listen_new_tickets")
 logger.setLevel(logging.INFO)
@@ -15,6 +16,7 @@ ch.setFormatter(formatter)
 logger.addHandler(ch)
 
 def inline_btn(ticket_id):
+    logger.info(f"TICKET ID = {ticket_id}")
     return InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text="Взяти в ремонт", callback_data=f"ticketID_{ticket_id}")]
@@ -69,6 +71,11 @@ async def listen_new_tickets(bot_instance: Bot):
                                          f"{description[:200]}...\n",
                                     reply_markup=inline_btn(ticket_id=ticket_id)
                                 )
+                                is_save = save_chat_info(ticket_id=ticket_id, client_id=client_id)
+                                if is_save:
+                                    logger.info(f"✅ Chat Info {ticket_id} save in Redis")
+                                else:
+                                    logger.info(f"❌ Chat Info {ticket_id} not save !!!")
                                 logger.info(f"✅ Ticket {ticket_id} sent to master {master.get('telegram_id')}")
                         except Exception as e:
                             logger.error(f"❌ Failed to send message to master {master.get('telegram_id')}: {e}")
@@ -80,4 +87,4 @@ async def listen_new_tickets(bot_instance: Bot):
 
         except Exception as e:
             logger.error(f"❌ Redis pubsub error: {e}")
-            await asyncio.sleep(1)  # пауза, щоб не спамити при критичній помилці
+            await asyncio.sleep(1)

@@ -24,6 +24,7 @@ class Settings(BaseSettings):
     JWT_SECRET_KEY: str = Field(..., env="JWT_SECRET_KEY")
     JWT_ALGORITHM: str = Field(..., env="JWT_ALGORITHM")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = Field(..., env="ACCESS_TOKEN_EXPIRE_MINUTES")
+    WS_TOKEN_EXPIRE_SECONDS: int = Field(..., env="WS_TOKEN_EXPIRE_SECONDS")
 
     #TELEGRAM API
     TELEGRAM_BOT_TOKEN: str | None = None
