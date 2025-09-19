@@ -11,8 +11,8 @@ import redis
 import json
 
 from backend.schemas.file import File as FileSchema
-from backend.database.models import File as  FileModel, Ticket
-from backend.database.dependencies import get_db
+from backend.database.models import File as  FileModel, Ticket, User
+from backend.database.dependencies import get_db, get_current_user
 from backend.schemas.ticket import TicketCreate, TicketPriority, TicketUpdate, TicketResponse
 from backend.settings.settings import settings
 
@@ -27,12 +27,16 @@ r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
 async def upload_ticket_file(
     ticket_id: int = Form(...),
     file: UploadFile = File(...),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    user: User = Depends(get_current_user)
 ):
     # Перевіряємо чи існує такий тікет
     ticket = db.query(Ticket).filter(Ticket.id == ticket_id).first()
     if not ticket:
         raise HTTPException(status_code=404, detail="Тікет не знайдено")
+    
+    if user.role != "admin" and ticket.client_id != user.id:
+        raise HTTPException(status_code=403, detail="Ви не маєте доступу до цього тікета")
 
     # Папка для збереження
     upload_dir = "uploads"
@@ -68,12 +72,26 @@ async def upload_ticket_file(
     )
 
 @ticket_router.get("/get_tickets/")
-async def get_tickets(db: Session = Depends(get_db)):
-    return db.query(Ticket).all()
+async def get_tickets(db: Session = Depends(get_db),
+                      user: User = Depends(get_current_user)):
+    if user.role == "admin":
+        return db.query(Ticket).all()
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Access forbidden: only admins can view all tickets"
+        )
 
 
 @ticket_router.post("/create/ticket", response_model=TicketResponse)
-async def create_ticket(ticket: TicketCreate, db: Session = Depends(get_db)):
+async def create_ticket(ticket: TicketCreate,
+                        db: Session = Depends(get_db),
+                        user: User = Depends(get_current_user)):
+    if user.role != "admin" and ticket.client_id != user.id:
+        raise HTTPException(
+            status_code=403,
+            detail="Ви не можете створювати тікети для інших користувачів"
+        )
     new_ticket = Ticket(
         title=ticket.title,
         description=ticket.description,
@@ -96,25 +114,28 @@ async def create_ticket(ticket: TicketCreate, db: Session = Depends(get_db)):
 
 
 @ticket_router.get("/get_ticket/{ticket_id}", response_model=TicketResponse)
-async def get_ticket(ticket_id: int, db: Session = Depends(get_db)):
+async def get_ticket(ticket_id: int,
+                     db: Session = Depends(get_db),
+                     user: User = Depends(get_current_user)):
     ticket = db.query(Ticket).filter_by(id=ticket_id).first()
     if not ticket:
         raise HTTPException(status_code=404, detail="Ticket not found")
+    if user.role != "admin" and ticket.client_id != user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Відмовленно у доступі!"
+        )
     return ticket
 
 
+@ticket_router.get("/user/get_tickets/")
+async def get_tickets(db: Session = Depends(get_db),
+                      user: User = Depends(get_current_user)):
+    query = db.query(Ticket).options(joinedload(Ticket.files))
+    if user.role != "admin":
+        query = query.filter(Ticket.client_id == user.id)
 
-@ticket_router.get("/user/get_tickets/{client_id}")
-async def get_tickets(client_id: int, db: Session = Depends(get_db)):
-    tickets = (
-        db.query(Ticket)
-        .options(joinedload(Ticket.files))  # Одразу підвантажуємо файли
-        .filter_by(client_id=client_id)
-        .all()
-    )
-
-    if not tickets:
-        return {"data": {"status": 404, "message": "Tickets not found"}}
+    tickets = query.all()
 
     result = []
     for ticket in tickets:
@@ -125,5 +146,5 @@ async def get_tickets(client_id: int, db: Session = Depends(get_db)):
             "status": ticket.status,
             "photos": [file.url for file in ticket.files]
         })
-    print(result)
+
     return {"data": {"status": 200, "tickets": result}}

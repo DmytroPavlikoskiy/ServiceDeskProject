@@ -239,7 +239,7 @@
       <div class="chat-messages" id="chatMessages"></div>
 
       <!-- Відправка повідомлення -->
-      <form class="chat-input" id="chatForm">
+      <div class="chat-input" id="chatForm">
         <input type="text" id="messageInput" placeholder="Напишіть повідомлення..." />
         
         <!-- Вибір файлу -->
@@ -248,8 +248,8 @@
         </label>
         <input type="file" id="fileInput" accept="image/*" style="display:none;" />
       
-        <button type="submit">Відправити</button>
-      </form>
+        <button onclick="sendWsMessage()">Відправити</a>
+      </div>
     </div>
   </div>
 </div>

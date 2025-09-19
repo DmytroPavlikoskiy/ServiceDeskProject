@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from typing import List
 
 from backend.database.models import User
-from backend.database.dependencies import get_db
+from backend.database.dependencies import get_db, get_current_user
 from backend.schemas.user import UserCreate, User as UserSchema, UserLogin, RegisterResponse
 from backend.settings.settings import settings
 
@@ -36,13 +36,6 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 
-def decode_access_token(token: str):
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        return payload.get("sub")
-    except JWTError:
-        return None
-
 def verify_bot_token(x_bot_token: str = Header(None)):
     if x_bot_token is None:
         return "frontend"  # якщо заголовку немає → фронт
@@ -51,19 +44,30 @@ def verify_bot_token(x_bot_token: str = Header(None)):
     return "bot"
 
 
-def get_current_user(db: Session = Depends(get_db), token: str | None = None):
-    if not token:
-        return None
-    email = decode_access_token(token)
-    if email is None:
-        return None
-    return db.query(User).filter(User.email == email).first()
-
-
 @auth_router.get("/get_masters", response_model=List[UserSchema])
-def get_masters(db: Session = Depends(get_db), source: str = Depends(verify_bot_token)):
+def get_masters(db: Session = Depends(get_db),
+                source: str = Depends(verify_bot_token)):
+    if source != "bot":
+        raise HTTPException(status_code=403, detail="Forbidden")
     masters = db.query(User).filter_by(role="master").all()
+    if not masters:
+        raise HTTPException(status_code=404, detail="Masters not found")
     return masters
+
+
+@auth_router.get("/get_master/{telegram_id}", response_model=UserSchema)
+def get_master(
+    telegram_id: int,
+    db: Session = Depends(get_db),
+    source: str = Depends(verify_bot_token)
+):
+    if source != "bot":
+        raise HTTPException(status_code=403, detail="Forbidden")
+    master = db.query(User).filter_by(telegram_id=telegram_id, role="master").first()
+    if not master:
+        raise HTTPException(status_code=404, detail="Master not found")
+    return UserSchema.model_validate(master, from_attributes=True)
+
 
 # === Register ===
 @auth_router.post("/register", response_model=RegisterResponse)
@@ -152,20 +156,8 @@ def login(
 
 # === Get current user ===
 @auth_router.get("/auth/user", response_model=UserSchema)
-def get_user(request: Request, db: Session = Depends(get_db)):
-    token = request.cookies.get("access_token")
-    if not token:
-        raise HTTPException(status_code=401, detail="Не авторизований")
-
-    email = decode_access_token(token)
-    if not email:
-        raise HTTPException(status_code=401, detail="Недійсний токен")
-
-    user = db.query(User).filter(User.email == email).first()
-    if not user:
-        raise HTTPException(status_code=401, detail="Користувач не знайдений")
-
-    return user
+def get_user(current_user: User = Depends(get_current_user)):
+    return current_user
 
 
 # === Logout ===

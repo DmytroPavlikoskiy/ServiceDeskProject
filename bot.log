@@ -189,3 +189,587 @@ TypeError: object ReplyKeyboardMarkup can't be used in 'await' expression
 2025-09-15 21:47:24,675 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
 2025-09-15 21:47:24,675 | INFO | aiogram.dispatcher | Polling stopped
 2025-09-15 21:47:24,844 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-16 17:51:24,080 | INFO | aiogram.dispatcher | Start polling
+2025-09-16 17:51:24,092 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-16 17:51:24,237 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-16 18:10:24,450 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-16 18:10:24,452 | WARNING | aiogram.dispatcher | Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8295568530)
+2025-09-16 18:10:25,465 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:10:25,465 | WARNING | aiogram.dispatcher | Sleep for 1.385247 seconds and try again... (tryings = 1, bot id = 8295568530)
+2025-09-16 18:10:26,854 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:10:26,854 | WARNING | aiogram.dispatcher | Sleep for 1.780785 seconds and try again... (tryings = 2, bot id = 8295568530)
+2025-09-16 18:10:28,639 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:10:28,639 | WARNING | aiogram.dispatcher | Sleep for 2.289930 seconds and try again... (tryings = 3, bot id = 8295568530)
+2025-09-16 18:10:30,933 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:10:30,933 | WARNING | aiogram.dispatcher | Sleep for 2.855036 seconds and try again... (tryings = 4, bot id = 8295568530)
+2025-09-16 18:10:33,791 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:10:33,792 | WARNING | aiogram.dispatcher | Sleep for 3.710401 seconds and try again... (tryings = 5, bot id = 8295568530)
+2025-09-16 18:10:37,506 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:10:37,506 | WARNING | aiogram.dispatcher | Sleep for 4.822851 seconds and try again... (tryings = 6, bot id = 8295568530)
+2025-09-16 18:10:42,333 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:10:42,334 | WARNING | aiogram.dispatcher | Sleep for 5.011464 seconds and try again... (tryings = 7, bot id = 8295568530)
+2025-09-16 18:10:47,347 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:10:47,347 | WARNING | aiogram.dispatcher | Sleep for 5.045898 seconds and try again... (tryings = 8, bot id = 8295568530)
+2025-09-16 18:10:52,401 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:10:52,401 | WARNING | aiogram.dispatcher | Sleep for 5.004477 seconds and try again... (tryings = 9, bot id = 8295568530)
+2025-09-16 18:10:57,409 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:10:57,409 | WARNING | aiogram.dispatcher | Sleep for 4.933331 seconds and try again... (tryings = 10, bot id = 8295568530)
+2025-09-16 18:11:02,346 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:02,346 | WARNING | aiogram.dispatcher | Sleep for 5.082335 seconds and try again... (tryings = 11, bot id = 8295568530)
+2025-09-16 18:11:07,432 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:07,432 | WARNING | aiogram.dispatcher | Sleep for 4.946675 seconds and try again... (tryings = 12, bot id = 8295568530)
+2025-09-16 18:11:12,382 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:12,383 | WARNING | aiogram.dispatcher | Sleep for 4.970321 seconds and try again... (tryings = 13, bot id = 8295568530)
+2025-09-16 18:11:17,357 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:17,357 | WARNING | aiogram.dispatcher | Sleep for 4.930955 seconds and try again... (tryings = 14, bot id = 8295568530)
+2025-09-16 18:11:22,292 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:22,293 | WARNING | aiogram.dispatcher | Sleep for 4.962688 seconds and try again... (tryings = 15, bot id = 8295568530)
+2025-09-16 18:11:27,259 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:27,259 | WARNING | aiogram.dispatcher | Sleep for 5.008106 seconds and try again... (tryings = 16, bot id = 8295568530)
+2025-09-16 18:11:32,270 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:32,270 | WARNING | aiogram.dispatcher | Sleep for 5.036663 seconds and try again... (tryings = 17, bot id = 8295568530)
+2025-09-16 18:11:37,311 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:37,312 | WARNING | aiogram.dispatcher | Sleep for 5.013747 seconds and try again... (tryings = 18, bot id = 8295568530)
+2025-09-16 18:11:42,329 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:42,330 | WARNING | aiogram.dispatcher | Sleep for 5.244313 seconds and try again... (tryings = 19, bot id = 8295568530)
+2025-09-16 18:11:47,577 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:47,578 | WARNING | aiogram.dispatcher | Sleep for 4.957090 seconds and try again... (tryings = 20, bot id = 8295568530)
+2025-09-16 18:11:52,538 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:52,538 | WARNING | aiogram.dispatcher | Sleep for 4.874392 seconds and try again... (tryings = 21, bot id = 8295568530)
+2025-09-16 18:11:57,414 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:11:57,415 | WARNING | aiogram.dispatcher | Sleep for 5.039832 seconds and try again... (tryings = 22, bot id = 8295568530)
+2025-09-16 18:12:02,457 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:02,458 | WARNING | aiogram.dispatcher | Sleep for 5.017365 seconds and try again... (tryings = 23, bot id = 8295568530)
+2025-09-16 18:12:07,478 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:07,478 | WARNING | aiogram.dispatcher | Sleep for 5.037486 seconds and try again... (tryings = 24, bot id = 8295568530)
+2025-09-16 18:12:12,519 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:12,519 | WARNING | aiogram.dispatcher | Sleep for 5.246149 seconds and try again... (tryings = 25, bot id = 8295568530)
+2025-09-16 18:12:17,768 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:17,769 | WARNING | aiogram.dispatcher | Sleep for 4.996810 seconds and try again... (tryings = 26, bot id = 8295568530)
+2025-09-16 18:12:22,770 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:22,770 | WARNING | aiogram.dispatcher | Sleep for 5.041607 seconds and try again... (tryings = 27, bot id = 8295568530)
+2025-09-16 18:12:27,823 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:27,823 | WARNING | aiogram.dispatcher | Sleep for 4.980806 seconds and try again... (tryings = 28, bot id = 8295568530)
+2025-09-16 18:12:32,807 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:32,808 | WARNING | aiogram.dispatcher | Sleep for 4.870102 seconds and try again... (tryings = 29, bot id = 8295568530)
+2025-09-16 18:12:37,681 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:37,681 | WARNING | aiogram.dispatcher | Sleep for 4.847500 seconds and try again... (tryings = 30, bot id = 8295568530)
+2025-09-16 18:12:42,532 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:42,532 | WARNING | aiogram.dispatcher | Sleep for 4.806143 seconds and try again... (tryings = 31, bot id = 8295568530)
+2025-09-16 18:12:47,341 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:47,342 | WARNING | aiogram.dispatcher | Sleep for 5.025817 seconds and try again... (tryings = 32, bot id = 8295568530)
+2025-09-16 18:12:52,371 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:52,371 | WARNING | aiogram.dispatcher | Sleep for 4.878838 seconds and try again... (tryings = 33, bot id = 8295568530)
+2025-09-16 18:12:57,253 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:12:57,253 | WARNING | aiogram.dispatcher | Sleep for 5.034986 seconds and try again... (tryings = 34, bot id = 8295568530)
+2025-09-16 18:13:02,292 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:02,293 | WARNING | aiogram.dispatcher | Sleep for 4.863629 seconds and try again... (tryings = 35, bot id = 8295568530)
+2025-09-16 18:13:07,160 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:07,160 | WARNING | aiogram.dispatcher | Sleep for 4.845228 seconds and try again... (tryings = 36, bot id = 8295568530)
+2025-09-16 18:13:12,009 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:12,009 | WARNING | aiogram.dispatcher | Sleep for 4.961078 seconds and try again... (tryings = 37, bot id = 8295568530)
+2025-09-16 18:13:16,974 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:16,975 | WARNING | aiogram.dispatcher | Sleep for 5.126900 seconds and try again... (tryings = 38, bot id = 8295568530)
+2025-09-16 18:13:22,104 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:22,105 | WARNING | aiogram.dispatcher | Sleep for 4.988550 seconds and try again... (tryings = 39, bot id = 8295568530)
+2025-09-16 18:13:27,097 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:27,098 | WARNING | aiogram.dispatcher | Sleep for 5.014365 seconds and try again... (tryings = 40, bot id = 8295568530)
+2025-09-16 18:13:32,115 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:32,115 | WARNING | aiogram.dispatcher | Sleep for 5.049304 seconds and try again... (tryings = 41, bot id = 8295568530)
+2025-09-16 18:13:37,167 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:37,167 | WARNING | aiogram.dispatcher | Sleep for 4.969271 seconds and try again... (tryings = 42, bot id = 8295568530)
+2025-09-16 18:13:42,139 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:42,140 | WARNING | aiogram.dispatcher | Sleep for 4.995734 seconds and try again... (tryings = 43, bot id = 8295568530)
+2025-09-16 18:13:47,140 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:47,140 | WARNING | aiogram.dispatcher | Sleep for 4.987162 seconds and try again... (tryings = 44, bot id = 8295568530)
+2025-09-16 18:13:52,130 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:52,130 | WARNING | aiogram.dispatcher | Sleep for 5.060482 seconds and try again... (tryings = 45, bot id = 8295568530)
+2025-09-16 18:13:57,194 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:13:57,195 | WARNING | aiogram.dispatcher | Sleep for 4.892606 seconds and try again... (tryings = 46, bot id = 8295568530)
+2025-09-16 18:14:02,092 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:02,092 | WARNING | aiogram.dispatcher | Sleep for 5.021182 seconds and try again... (tryings = 47, bot id = 8295568530)
+2025-09-16 18:14:07,116 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:07,117 | WARNING | aiogram.dispatcher | Sleep for 5.056667 seconds and try again... (tryings = 48, bot id = 8295568530)
+2025-09-16 18:14:12,177 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:12,177 | WARNING | aiogram.dispatcher | Sleep for 4.946248 seconds and try again... (tryings = 49, bot id = 8295568530)
+2025-09-16 18:14:17,127 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:17,128 | WARNING | aiogram.dispatcher | Sleep for 4.927030 seconds and try again... (tryings = 50, bot id = 8295568530)
+2025-09-16 18:14:22,057 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:22,058 | WARNING | aiogram.dispatcher | Sleep for 5.042968 seconds and try again... (tryings = 51, bot id = 8295568530)
+2025-09-16 18:14:27,105 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:27,106 | WARNING | aiogram.dispatcher | Sleep for 4.868381 seconds and try again... (tryings = 52, bot id = 8295568530)
+2025-09-16 18:14:31,978 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:31,978 | WARNING | aiogram.dispatcher | Sleep for 5.198206 seconds and try again... (tryings = 53, bot id = 8295568530)
+2025-09-16 18:14:37,180 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:37,180 | WARNING | aiogram.dispatcher | Sleep for 5.088268 seconds and try again... (tryings = 54, bot id = 8295568530)
+2025-09-16 18:14:42,271 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:42,271 | WARNING | aiogram.dispatcher | Sleep for 4.759627 seconds and try again... (tryings = 55, bot id = 8295568530)
+2025-09-16 18:14:47,036 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:47,037 | WARNING | aiogram.dispatcher | Sleep for 5.044156 seconds and try again... (tryings = 56, bot id = 8295568530)
+2025-09-16 18:14:52,085 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:52,085 | WARNING | aiogram.dispatcher | Sleep for 5.049844 seconds and try again... (tryings = 57, bot id = 8295568530)
+2025-09-16 18:14:57,138 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:14:57,138 | WARNING | aiogram.dispatcher | Sleep for 5.055751 seconds and try again... (tryings = 58, bot id = 8295568530)
+2025-09-16 18:15:02,197 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:02,197 | WARNING | aiogram.dispatcher | Sleep for 4.991584 seconds and try again... (tryings = 59, bot id = 8295568530)
+2025-09-16 18:15:07,194 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:07,195 | WARNING | aiogram.dispatcher | Sleep for 5.060557 seconds and try again... (tryings = 60, bot id = 8295568530)
+2025-09-16 18:15:12,258 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:12,259 | WARNING | aiogram.dispatcher | Sleep for 5.004087 seconds and try again... (tryings = 61, bot id = 8295568530)
+2025-09-16 18:15:17,265 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:17,266 | WARNING | aiogram.dispatcher | Sleep for 5.096305 seconds and try again... (tryings = 62, bot id = 8295568530)
+2025-09-16 18:15:22,365 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:22,365 | WARNING | aiogram.dispatcher | Sleep for 4.995095 seconds and try again... (tryings = 63, bot id = 8295568530)
+2025-09-16 18:15:27,369 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:27,370 | WARNING | aiogram.dispatcher | Sleep for 5.024343 seconds and try again... (tryings = 64, bot id = 8295568530)
+2025-09-16 18:15:32,397 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:32,397 | WARNING | aiogram.dispatcher | Sleep for 4.974821 seconds and try again... (tryings = 65, bot id = 8295568530)
+2025-09-16 18:15:37,376 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:37,377 | WARNING | aiogram.dispatcher | Sleep for 4.890327 seconds and try again... (tryings = 66, bot id = 8295568530)
+2025-09-16 18:15:42,270 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:42,273 | WARNING | aiogram.dispatcher | Sleep for 4.910077 seconds and try again... (tryings = 67, bot id = 8295568530)
+2025-09-16 18:15:47,186 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:47,189 | WARNING | aiogram.dispatcher | Sleep for 4.993379 seconds and try again... (tryings = 68, bot id = 8295568530)
+2025-09-16 18:15:52,185 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:52,187 | WARNING | aiogram.dispatcher | Sleep for 5.016732 seconds and try again... (tryings = 69, bot id = 8295568530)
+2025-09-16 18:15:57,207 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:15:57,208 | WARNING | aiogram.dispatcher | Sleep for 5.180401 seconds and try again... (tryings = 70, bot id = 8295568530)
+2025-09-16 18:16:02,391 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:02,391 | WARNING | aiogram.dispatcher | Sleep for 5.005682 seconds and try again... (tryings = 71, bot id = 8295568530)
+2025-09-16 18:16:07,401 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:07,401 | WARNING | aiogram.dispatcher | Sleep for 5.083055 seconds and try again... (tryings = 72, bot id = 8295568530)
+2025-09-16 18:16:12,488 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:12,488 | WARNING | aiogram.dispatcher | Sleep for 5.008962 seconds and try again... (tryings = 73, bot id = 8295568530)
+2025-09-16 18:16:17,500 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:17,500 | WARNING | aiogram.dispatcher | Sleep for 4.898131 seconds and try again... (tryings = 74, bot id = 8295568530)
+2025-09-16 18:16:22,403 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:22,404 | WARNING | aiogram.dispatcher | Sleep for 5.068741 seconds and try again... (tryings = 75, bot id = 8295568530)
+2025-09-16 18:16:27,475 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:27,476 | WARNING | aiogram.dispatcher | Sleep for 5.010900 seconds and try again... (tryings = 76, bot id = 8295568530)
+2025-09-16 18:16:32,488 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:32,489 | WARNING | aiogram.dispatcher | Sleep for 4.971569 seconds and try again... (tryings = 77, bot id = 8295568530)
+2025-09-16 18:16:37,465 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:37,465 | WARNING | aiogram.dispatcher | Sleep for 4.969720 seconds and try again... (tryings = 78, bot id = 8295568530)
+2025-09-16 18:16:42,437 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:42,437 | WARNING | aiogram.dispatcher | Sleep for 4.912727 seconds and try again... (tryings = 79, bot id = 8295568530)
+2025-09-16 18:16:47,356 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:47,357 | WARNING | aiogram.dispatcher | Sleep for 4.930680 seconds and try again... (tryings = 80, bot id = 8295568530)
+2025-09-16 18:16:52,289 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:52,290 | WARNING | aiogram.dispatcher | Sleep for 5.037291 seconds and try again... (tryings = 81, bot id = 8295568530)
+2025-09-16 18:16:57,331 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:16:57,332 | WARNING | aiogram.dispatcher | Sleep for 4.905767 seconds and try again... (tryings = 82, bot id = 8295568530)
+2025-09-16 18:17:02,241 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:02,241 | WARNING | aiogram.dispatcher | Sleep for 4.919571 seconds and try again... (tryings = 83, bot id = 8295568530)
+2025-09-16 18:17:07,172 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:07,172 | WARNING | aiogram.dispatcher | Sleep for 4.875098 seconds and try again... (tryings = 84, bot id = 8295568530)
+2025-09-16 18:17:12,051 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:12,051 | WARNING | aiogram.dispatcher | Sleep for 4.987394 seconds and try again... (tryings = 85, bot id = 8295568530)
+2025-09-16 18:17:17,041 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:17,042 | WARNING | aiogram.dispatcher | Sleep for 4.921203 seconds and try again... (tryings = 86, bot id = 8295568530)
+2025-09-16 18:17:21,965 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:21,965 | WARNING | aiogram.dispatcher | Sleep for 5.045637 seconds and try again... (tryings = 87, bot id = 8295568530)
+2025-09-16 18:17:27,012 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:27,012 | WARNING | aiogram.dispatcher | Sleep for 5.093784 seconds and try again... (tryings = 88, bot id = 8295568530)
+2025-09-16 18:17:32,112 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:32,116 | WARNING | aiogram.dispatcher | Sleep for 4.953302 seconds and try again... (tryings = 89, bot id = 8295568530)
+2025-09-16 18:17:37,071 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:37,071 | WARNING | aiogram.dispatcher | Sleep for 5.064191 seconds and try again... (tryings = 90, bot id = 8295568530)
+2025-09-16 18:17:42,137 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:42,137 | WARNING | aiogram.dispatcher | Sleep for 4.961534 seconds and try again... (tryings = 91, bot id = 8295568530)
+2025-09-16 18:17:47,103 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:47,103 | WARNING | aiogram.dispatcher | Sleep for 4.856107 seconds and try again... (tryings = 92, bot id = 8295568530)
+2025-09-16 18:17:51,961 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:51,961 | WARNING | aiogram.dispatcher | Sleep for 5.090221 seconds and try again... (tryings = 93, bot id = 8295568530)
+2025-09-16 18:17:57,054 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:17:57,059 | WARNING | aiogram.dispatcher | Sleep for 4.912789 seconds and try again... (tryings = 94, bot id = 8295568530)
+2025-09-16 18:18:01,986 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:01,987 | WARNING | aiogram.dispatcher | Sleep for 4.963504 seconds and try again... (tryings = 95, bot id = 8295568530)
+2025-09-16 18:18:06,954 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:06,955 | WARNING | aiogram.dispatcher | Sleep for 4.955316 seconds and try again... (tryings = 96, bot id = 8295568530)
+2025-09-16 18:18:11,911 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:11,912 | WARNING | aiogram.dispatcher | Sleep for 5.083061 seconds and try again... (tryings = 97, bot id = 8295568530)
+2025-09-16 18:18:16,998 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:16,998 | WARNING | aiogram.dispatcher | Sleep for 4.994775 seconds and try again... (tryings = 98, bot id = 8295568530)
+2025-09-16 18:18:21,996 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:21,997 | WARNING | aiogram.dispatcher | Sleep for 4.851150 seconds and try again... (tryings = 99, bot id = 8295568530)
+2025-09-16 18:18:26,851 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:26,852 | WARNING | aiogram.dispatcher | Sleep for 5.048543 seconds and try again... (tryings = 100, bot id = 8295568530)
+2025-09-16 18:18:31,904 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:31,905 | WARNING | aiogram.dispatcher | Sleep for 5.225395 seconds and try again... (tryings = 101, bot id = 8295568530)
+2025-09-16 18:18:37,134 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:37,135 | WARNING | aiogram.dispatcher | Sleep for 5.032357 seconds and try again... (tryings = 102, bot id = 8295568530)
+2025-09-16 18:18:42,170 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:42,170 | WARNING | aiogram.dispatcher | Sleep for 5.046713 seconds and try again... (tryings = 103, bot id = 8295568530)
+2025-09-16 18:18:47,218 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:47,218 | WARNING | aiogram.dispatcher | Sleep for 4.944111 seconds and try again... (tryings = 104, bot id = 8295568530)
+2025-09-16 18:18:52,166 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:52,166 | WARNING | aiogram.dispatcher | Sleep for 5.112806 seconds and try again... (tryings = 105, bot id = 8295568530)
+2025-09-16 18:18:57,281 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:18:57,281 | WARNING | aiogram.dispatcher | Sleep for 4.975326 seconds and try again... (tryings = 106, bot id = 8295568530)
+2025-09-16 18:19:02,259 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:19:02,259 | WARNING | aiogram.dispatcher | Sleep for 5.039400 seconds and try again... (tryings = 107, bot id = 8295568530)
+2025-09-16 18:19:07,302 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:19:07,302 | WARNING | aiogram.dispatcher | Sleep for 4.995100 seconds and try again... (tryings = 108, bot id = 8295568530)
+2025-09-16 18:19:12,301 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:19:12,301 | WARNING | aiogram.dispatcher | Sleep for 5.009232 seconds and try again... (tryings = 109, bot id = 8295568530)
+2025-09-16 18:19:17,313 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:19:17,313 | WARNING | aiogram.dispatcher | Sleep for 5.173018 seconds and try again... (tryings = 110, bot id = 8295568530)
+2025-09-16 18:19:22,489 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:19:22,489 | WARNING | aiogram.dispatcher | Sleep for 4.822733 seconds and try again... (tryings = 111, bot id = 8295568530)
+2025-09-16 18:19:27,316 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:19:27,317 | WARNING | aiogram.dispatcher | Sleep for 4.949118 seconds and try again... (tryings = 112, bot id = 8295568530)
+2025-09-16 18:19:32,270 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:19:32,270 | WARNING | aiogram.dispatcher | Sleep for 4.876412 seconds and try again... (tryings = 113, bot id = 8295568530)
+2025-09-16 18:19:37,148 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-16 18:19:37,149 | WARNING | aiogram.dispatcher | Sleep for 4.911443 seconds and try again... (tryings = 114, bot id = 8295568530)
+2025-09-16 18:19:52,214 | INFO | aiogram.dispatcher | Connection established (tryings = 115, bot id = 8295568530)
+2025-09-16 18:24:37,923 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-16 18:24:37,928 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-16 18:24:37,929 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-16 18:24:38,081 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-16 18:24:42,323 | INFO | aiogram.dispatcher | Start polling
+2025-09-16 18:24:42,327 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-16 18:24:42,448 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-16 19:01:34,884 | INFO | listen_new_tickets | 📨 New ticket received: 12 from client 1
+2025-09-16 19:01:34,898 | INFO | listen_new_tickets | [{'id': 2, 'telegram_id': 7128321509, 'email': 'master123@gmail.com', 'full_name': 'Master Dima', 'role': 'master'}]
+2025-09-16 19:01:35,147 | ERROR | listen_new_tickets | ❌ Failed to send message to master 7128321509: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-09-16 19:14:06,547 | INFO | listen_new_tickets | 📨 New ticket received: 13 from client 1
+2025-09-16 19:14:06,562 | INFO | listen_new_tickets | [{'id': 2, 'telegram_id': 7128321509, 'email': 'master123@gmail.com', 'full_name': 'Master Dima', 'role': 'master'}]
+2025-09-16 19:14:06,681 | ERROR | listen_new_tickets | ❌ Failed to send message to master 7128321509: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-09-16 19:14:21,102 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-16 19:14:21,104 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-16 19:14:21,105 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-16 19:14:21,212 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-16 19:14:24,379 | INFO | aiogram.dispatcher | Start polling
+2025-09-16 19:14:24,382 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-16 19:14:24,752 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-16 19:15:42,529 | INFO | listen_new_tickets | 📨 New ticket received: 14 from client 1
+2025-09-16 19:15:42,556 | INFO | listen_new_tickets | [{'id': 2, 'telegram_id': 7128321509, 'email': 'master123@gmail.com', 'full_name': 'Master Dima', 'role': 'master'}]
+2025-09-16 19:15:42,756 | ERROR | listen_new_tickets | ❌ Failed to send message to master 7128321509: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-09-16 19:20:30,485 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-16 19:20:30,488 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-16 19:20:30,488 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-16 19:20:30,647 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-16 19:20:33,294 | INFO | aiogram.dispatcher | Start polling
+2025-09-16 19:20:33,298 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-16 19:20:33,466 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-16 19:20:50,619 | INFO | listen_new_tickets | 📨 New ticket received: 15 from client 1
+2025-09-16 19:20:50,644 | INFO | listen_new_tickets | [{'id': 2, 'telegram_id': 7128321509, 'email': 'master123@gmail.com', 'full_name': 'Master Dima', 'role': 'master'}]
+2025-09-16 19:20:50,644 | INFO | listen_new_tickets | TICKET ID = 15
+2025-09-16 19:20:50,938 | ERROR | listen_new_tickets | ❌ Failed to send message to master 7128321509: Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-09-16 19:38:11,446 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-16 19:38:11,452 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-16 19:38:11,453 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-16 19:38:11,605 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-16 19:38:14,584 | INFO | aiogram.dispatcher | Start polling
+2025-09-16 19:38:14,588 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-16 19:38:14,769 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-16 19:39:03,013 | INFO | listen_new_tickets | 📨 New ticket received: 16 from client 1
+2025-09-16 19:39:03,032 | INFO | listen_new_tickets | [{'id': 2, 'telegram_id': 7128321509, 'email': 'master123@gmail.com', 'full_name': 'Master Dima', 'role': 'master'}]
+2025-09-16 19:39:03,032 | INFO | listen_new_tickets | TICKET ID = 16
+2025-09-16 19:39:03,241 | INFO | redis_procceses | Інформацію про чат між клєнтом ID: 1 і майстром ID: None збережено у Redis
+2025-09-16 19:39:03,241 | INFO | listen_new_tickets | ✅ Chat Info 16 save in Redis
+2025-09-16 19:39:03,241 | INFO | listen_new_tickets | ✅ Ticket 16 sent to master 7128321509
+2025-09-16 19:39:11,071 | INFO | aiogram.event | Update id=136329830 is not handled. Duration 16 ms by bot id=8295568530
+2025-09-16 19:39:11,072 | ERROR | aiogram.event | Cause exception while process update id=136329830 by bot id=8295568530
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+Traceback (most recent call last):
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/bot/routers/ticket_notification_handler.py", line 63, in notification_create_chat
+    is_update = update_chat_info(ticket_id=int(ticket_id), master_id=int(master.get('id')))
+                                                                     ^^^^^^^^^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2025-09-16 19:39:23,183 | INFO | aiogram.event | Update id=136329831 is not handled. Duration 3 ms by bot id=8295568530
+2025-09-16 19:39:23,184 | ERROR | aiogram.event | Cause exception while process update id=136329831 by bot id=8295568530
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+Traceback (most recent call last):
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/maksimkarbovnik/Projects/iTeens/FastAPIStart/ServiceDeskProject/bot/routers/ticket_notification_handler.py", line 63, in notification_create_chat
+    is_update = update_chat_info(ticket_id=int(ticket_id), master_id=int(master.get('id')))
+                                                                     ^^^^^^^^^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2025-09-16 19:43:50,265 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-16 19:43:50,270 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-16 19:43:50,270 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-16 19:43:50,413 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-16 19:43:53,184 | INFO | aiogram.dispatcher | Start polling
+2025-09-16 19:43:53,189 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-16 19:43:53,315 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-16 19:44:06,317 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 19:44:06,317 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 19:44:06,336 | INFO | notification_create_chat | ✅ Chat created !!!
+2025-09-16 19:44:06,337 | INFO | aiogram.event | Update id=136329832 is handled. Duration 131 ms by bot id=8295568530
+2025-09-16 19:46:10,906 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 19:46:10,908 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 19:46:10,914 | INFO | notification_create_chat | ✅ Chat created !!!
+2025-09-16 19:46:10,914 | INFO | aiogram.event | Update id=136329833 is handled. Duration 32 ms by bot id=8295568530
+2025-09-16 19:57:28,797 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 19:57:28,799 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 19:57:28,805 | INFO | notification_create_chat | ✅ Chat created !!!
+2025-09-16 19:57:28,805 | INFO | aiogram.event | Update id=136329834 is handled. Duration 33 ms by bot id=8295568530
+2025-09-16 19:57:40,784 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 19:57:40,784 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 19:57:40,787 | INFO | notification_create_chat | ✅ Chat created !!!
+2025-09-16 19:57:40,787 | INFO | aiogram.event | Update id=136329835 is handled. Duration 8 ms by bot id=8295568530
+2025-09-16 20:01:20,413 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 20:01:20,414 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 20:01:20,419 | INFO | notification_create_chat | ✅ Chat created !!!
+2025-09-16 20:01:20,419 | INFO | aiogram.event | Update id=136329836 is handled. Duration 39 ms by bot id=8295568530
+2025-09-16 20:11:14,525 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 20:11:14,526 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 20:11:14,543 | INFO | notification_create_chat | ❌ Chat not create !!!
+2025-09-16 20:11:14,544 | INFO | aiogram.event | Update id=136329837 is handled. Duration 119 ms by bot id=8295568530
+2025-09-16 20:11:20,216 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 20:11:20,217 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 20:11:20,224 | INFO | notification_create_chat | ❌ Chat not create !!!
+2025-09-16 20:11:20,225 | INFO | aiogram.event | Update id=136329838 is handled. Duration 22 ms by bot id=8295568530
+2025-09-16 20:11:34,559 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 20:11:34,559 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 20:11:34,566 | INFO | notification_create_chat | ❌ Chat not create !!!
+2025-09-16 20:11:34,567 | INFO | aiogram.event | Update id=136329839 is handled. Duration 23 ms by bot id=8295568530
+2025-09-16 20:12:48,945 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 20:12:48,946 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 20:12:48,956 | INFO | notification_create_chat | ✅ Chat created !!!
+2025-09-16 20:12:48,957 | INFO | aiogram.event | Update id=136329840 is handled. Duration 30 ms by bot id=8295568530
+2025-09-16 20:22:46,917 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 20:22:46,917 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 20:22:46,938 | INFO | notification_create_chat | ❌ Chat not create !!!
+2025-09-16 20:22:46,938 | INFO | aiogram.event | Update id=136329841 is handled. Duration 42 ms by bot id=8295568530
+2025-09-16 20:23:36,444 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 20:23:36,446 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 20:23:36,455 | INFO | notification_create_chat | ✅ Chat created !!!
+2025-09-16 20:23:36,456 | INFO | aiogram.event | Update id=136329842 is handled. Duration 25 ms by bot id=8295568530
+2025-09-16 20:23:48,594 | INFO | redis_procceses | ✅ Чат 16 оновлений у Redis: {'master_id': 2}
+2025-09-16 20:23:48,594 | INFO | notification_create_chat | ✅ Chat Info 16 update in Redis
+2025-09-16 20:23:48,600 | INFO | notification_create_chat | ✅ Chat created !!!
+2025-09-16 20:23:48,601 | INFO | aiogram.event | Update id=136329843 is handled. Duration 42 ms by bot id=8295568530
+2025-09-16 20:37:04,281 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-16 20:37:04,284 | WARNING | aiogram.dispatcher | Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8295568530)
+2025-09-16 20:37:15,426 | INFO | aiogram.dispatcher | Connection established (tryings = 1, bot id = 8295568530)
+2025-09-16 20:54:49,852 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-16 20:54:49,963 | WARNING | aiogram.dispatcher | Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8295568530)
+2025-09-16 20:55:01,094 | INFO | aiogram.dispatcher | Connection established (tryings = 1, bot id = 8295568530)
+2025-09-16 21:23:24,243 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-16 21:23:24,249 | WARNING | aiogram.dispatcher | Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8295568530)
+2025-09-16 21:23:35,435 | INFO | aiogram.dispatcher | Connection established (tryings = 1, bot id = 8295568530)
+2025-09-16 21:32:44,367 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-16 21:32:44,558 | WARNING | aiogram.dispatcher | Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8295568530)
+2025-09-16 22:55:16,034 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-16 22:55:16,140 | WARNING | aiogram.dispatcher | Sleep for 1.225097 seconds and try again... (tryings = 1, bot id = 8295568530)
+2025-09-16 23:13:05,511 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-16 23:13:05,610 | WARNING | aiogram.dispatcher | Sleep for 1.508602 seconds and try again... (tryings = 2, bot id = 8295568530)
+2025-09-16 23:33:44,542 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-16 23:33:44,645 | WARNING | aiogram.dispatcher | Sleep for 1.998086 seconds and try again... (tryings = 3, bot id = 8295568530)
+2025-09-17 00:34:45,481 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-17 00:34:45,582 | WARNING | aiogram.dispatcher | Sleep for 2.616758 seconds and try again... (tryings = 4, bot id = 8295568530)
+2025-09-17 00:49:54,469 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-17 00:49:54,565 | WARNING | aiogram.dispatcher | Sleep for 3.342529 seconds and try again... (tryings = 5, bot id = 8295568530)
+2025-09-17 01:35:46,409 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-17 01:35:46,519 | WARNING | aiogram.dispatcher | Sleep for 4.348753 seconds and try again... (tryings = 6, bot id = 8295568530)
+2025-09-17 02:36:46,065 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-17 02:36:46,173 | WARNING | aiogram.dispatcher | Sleep for 5.036382 seconds and try again... (tryings = 7, bot id = 8295568530)
+2025-09-17 03:20:25,528 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-17 03:20:25,631 | WARNING | aiogram.dispatcher | Sleep for 5.025468 seconds and try again... (tryings = 8, bot id = 8295568530)
+2025-09-17 03:20:40,823 | INFO | aiogram.dispatcher | Connection established (tryings = 9, bot id = 8295568530)
+2025-09-17 04:13:00,378 | WARNING | aiogram.dispatcher | Received SIGINT signal
+2025-09-17 04:13:00,388 | INFO | aiogram.dispatcher | Polling stopped for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-17 04:13:00,388 | INFO | aiogram.dispatcher | Polling stopped
+2025-09-18 14:54:49,251 | INFO | aiogram.dispatcher | Start polling
+2025-09-18 14:54:49,260 | INFO | listen_new_tickets | ✅ Started listening to new_ticket_channel
+2025-09-18 14:54:49,389 | INFO | aiogram.dispatcher | Run polling for bot @SDPlusSupportBot id=8295568530 - 'ServiceDeskPlusBot'
+2025-09-18 15:33:28,672 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-18 15:33:28,726 | WARNING | aiogram.dispatcher | Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8295568530)
+2025-09-18 15:33:40,006 | INFO | aiogram.dispatcher | Connection established (tryings = 1, bot id = 8295568530)
+2025-09-18 17:47:19,528 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-18 17:47:19,533 | WARNING | aiogram.dispatcher | Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8295568530)
+2025-09-18 17:47:30,732 | INFO | aiogram.dispatcher | Connection established (tryings = 1, bot id = 8295568530)
+2025-09-18 19:08:23,259 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-09-18 19:08:23,260 | WARNING | aiogram.dispatcher | Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8295568530)
+2025-09-18 19:08:34,394 | INFO | aiogram.dispatcher | Connection established (tryings = 1, bot id = 8295568530)
+2025-09-18 21:56:09,496 | INFO | listen_new_tickets | 📨 New ticket received: 17 from client 1
+2025-09-18 21:56:09,514 | INFO | listen_new_tickets | [{'id': 2, 'telegram_id': 7128321509, 'email': 'master123@gmail.com', 'full_name': 'Master Dima', 'role': 'master'}]
+2025-09-18 21:56:09,515 | INFO | listen_new_tickets | TICKET ID = 17
+2025-09-18 21:56:09,873 | INFO | redis_procceses | Інформацію про чат між клєнтом ID: 1 і майстром ID: None збережено у Redis
+2025-09-18 21:56:09,873 | INFO | listen_new_tickets | ✅ Chat Info 17 save in Redis
+2025-09-18 21:56:09,873 | INFO | listen_new_tickets | ✅ Ticket 17 sent to master 7128321509
+2025-09-18 21:56:38,400 | INFO | redis_procceses | ✅ Чат 17 оновлений у Redis: {'master_id': 2}
+2025-09-18 21:56:38,401 | INFO | notification_create_chat | ✅ Chat Info 17 update in Redis
+2025-09-18 21:56:38,415 | INFO | notification_create_chat | ✅ Chat created !!!
+2025-09-18 21:56:38,416 | INFO | aiogram.event | Update id=136329844 is handled. Duration 45 ms by bot id=8295568530
+2025-09-18 22:05:03,691 | INFO | listen_new_tickets | 📨 New ticket received: 18 from client 1
+2025-09-18 22:05:03,794 | INFO | listen_new_tickets | [{'id': 2, 'telegram_id': 7128321509, 'email': 'master123@gmail.com', 'full_name': 'Master Dima', 'role': 'master'}]
+2025-09-18 22:05:03,794 | INFO | listen_new_tickets | TICKET ID = 18
+2025-09-18 22:05:03,886 | INFO | redis_procceses | Інформацію про чат між клєнтом ID: 1 і майстром ID: None збережено у Redis
+2025-09-18 22:05:03,886 | INFO | listen_new_tickets | ✅ Chat Info 18 save in Redis
+2025-09-18 22:05:03,886 | INFO | listen_new_tickets | ✅ Ticket 18 sent to master 7128321509
+2025-09-18 22:06:07,766 | INFO | redis_procceses | ✅ Чат 18 оновлений у Redis: {'master_id': 2}
+2025-09-18 22:06:07,767 | INFO | notification_create_chat | ✅ Chat Info 18 update in Redis
+2025-09-18 22:06:07,790 | INFO | notification_create_chat | ✅ Chat created !!!
+2025-09-18 22:06:07,790 | INFO | aiogram.event | Update id=136329845 is handled. Duration 60 ms by bot id=8295568530
+2025-09-19 14:56:28,787 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-09-19 14:56:28,807 | WARNING | aiogram.dispatcher | Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8295568530)
+2025-09-19 14:56:29,841 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:56:29,844 | WARNING | aiogram.dispatcher | Sleep for 1.319608 seconds and try again... (tryings = 1, bot id = 8295568530)
+2025-09-19 14:56:31,164 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:56:31,164 | WARNING | aiogram.dispatcher | Sleep for 1.544784 seconds and try again... (tryings = 2, bot id = 8295568530)
+2025-09-19 14:56:32,717 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:56:32,718 | WARNING | aiogram.dispatcher | Sleep for 2.020498 seconds and try again... (tryings = 3, bot id = 8295568530)
+2025-09-19 14:56:34,740 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:56:34,740 | WARNING | aiogram.dispatcher | Sleep for 2.746995 seconds and try again... (tryings = 4, bot id = 8295568530)
+2025-09-19 14:56:37,487 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:56:37,487 | WARNING | aiogram.dispatcher | Sleep for 3.581278 seconds and try again... (tryings = 5, bot id = 8295568530)
+2025-09-19 14:56:41,074 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:56:41,075 | WARNING | aiogram.dispatcher | Sleep for 4.750313 seconds and try again... (tryings = 6, bot id = 8295568530)
+2025-09-19 14:56:45,849 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:56:45,849 | WARNING | aiogram.dispatcher | Sleep for 5.065086 seconds and try again... (tryings = 7, bot id = 8295568530)
+2025-09-19 14:56:50,915 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:56:50,916 | WARNING | aiogram.dispatcher | Sleep for 4.931379 seconds and try again... (tryings = 8, bot id = 8295568530)
+2025-09-19 14:56:55,848 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:56:55,848 | WARNING | aiogram.dispatcher | Sleep for 5.138445 seconds and try again... (tryings = 9, bot id = 8295568530)
+2025-09-19 14:57:00,986 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:00,986 | WARNING | aiogram.dispatcher | Sleep for 4.944691 seconds and try again... (tryings = 10, bot id = 8295568530)
+2025-09-19 14:57:05,933 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:05,934 | WARNING | aiogram.dispatcher | Sleep for 5.048301 seconds and try again... (tryings = 11, bot id = 8295568530)
+2025-09-19 14:57:10,983 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:10,984 | WARNING | aiogram.dispatcher | Sleep for 5.142697 seconds and try again... (tryings = 12, bot id = 8295568530)
+2025-09-19 14:57:16,129 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:16,129 | WARNING | aiogram.dispatcher | Sleep for 5.214672 seconds and try again... (tryings = 13, bot id = 8295568530)
+2025-09-19 14:57:21,345 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:21,345 | WARNING | aiogram.dispatcher | Sleep for 5.130057 seconds and try again... (tryings = 14, bot id = 8295568530)
+2025-09-19 14:57:26,476 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:26,476 | WARNING | aiogram.dispatcher | Sleep for 5.024989 seconds and try again... (tryings = 15, bot id = 8295568530)
+2025-09-19 14:57:31,838 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:31,838 | WARNING | aiogram.dispatcher | Sleep for 4.888611 seconds and try again... (tryings = 16, bot id = 8295568530)
+2025-09-19 14:57:36,728 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:36,728 | WARNING | aiogram.dispatcher | Sleep for 5.007915 seconds and try again... (tryings = 17, bot id = 8295568530)
+2025-09-19 14:57:41,738 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:41,738 | WARNING | aiogram.dispatcher | Sleep for 4.954090 seconds and try again... (tryings = 18, bot id = 8295568530)
+2025-09-19 14:57:46,697 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:46,698 | WARNING | aiogram.dispatcher | Sleep for 5.262656 seconds and try again... (tryings = 19, bot id = 8295568530)
+2025-09-19 14:57:51,963 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:51,963 | WARNING | aiogram.dispatcher | Sleep for 5.026723 seconds and try again... (tryings = 20, bot id = 8295568530)
+2025-09-19 14:57:56,992 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:57:56,992 | WARNING | aiogram.dispatcher | Sleep for 4.978933 seconds and try again... (tryings = 21, bot id = 8295568530)
+2025-09-19 14:58:01,973 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:01,973 | WARNING | aiogram.dispatcher | Sleep for 5.076871 seconds and try again... (tryings = 22, bot id = 8295568530)
+2025-09-19 14:58:07,051 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:07,052 | WARNING | aiogram.dispatcher | Sleep for 5.024017 seconds and try again... (tryings = 23, bot id = 8295568530)
+2025-09-19 14:58:12,077 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:12,077 | WARNING | aiogram.dispatcher | Sleep for 5.011933 seconds and try again... (tryings = 24, bot id = 8295568530)
+2025-09-19 14:58:17,097 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:17,098 | WARNING | aiogram.dispatcher | Sleep for 4.998674 seconds and try again... (tryings = 25, bot id = 8295568530)
+2025-09-19 14:58:22,100 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:22,100 | WARNING | aiogram.dispatcher | Sleep for 4.862040 seconds and try again... (tryings = 26, bot id = 8295568530)
+2025-09-19 14:58:26,965 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:26,965 | WARNING | aiogram.dispatcher | Sleep for 4.944283 seconds and try again... (tryings = 27, bot id = 8295568530)
+2025-09-19 14:58:31,910 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:31,911 | WARNING | aiogram.dispatcher | Sleep for 4.970884 seconds and try again... (tryings = 28, bot id = 8295568530)
+2025-09-19 14:58:36,884 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:36,884 | WARNING | aiogram.dispatcher | Sleep for 4.976788 seconds and try again... (tryings = 29, bot id = 8295568530)
+2025-09-19 14:58:41,862 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:41,863 | WARNING | aiogram.dispatcher | Sleep for 5.076175 seconds and try again... (tryings = 30, bot id = 8295568530)
+2025-09-19 14:58:46,941 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:46,941 | WARNING | aiogram.dispatcher | Sleep for 5.061595 seconds and try again... (tryings = 31, bot id = 8295568530)
+2025-09-19 14:58:52,005 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:52,006 | WARNING | aiogram.dispatcher | Sleep for 5.018798 seconds and try again... (tryings = 32, bot id = 8295568530)
+2025-09-19 14:58:57,026 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:58:57,026 | WARNING | aiogram.dispatcher | Sleep for 4.919951 seconds and try again... (tryings = 33, bot id = 8295568530)
+2025-09-19 14:59:01,949 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:59:01,950 | WARNING | aiogram.dispatcher | Sleep for 5.081625 seconds and try again... (tryings = 34, bot id = 8295568530)
+2025-09-19 14:59:07,036 | ERROR | aiogram.dispatcher | Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-09-19 14:59:07,036 | WARNING | aiogram.dispatcher | Sleep for 4.977454 seconds and try again... (tryings = 35, bot id = 8295568530)
+2025-09-19 14:59:22,243 | INFO | aiogram.dispatcher | Connection established (tryings = 36, bot id = 8295568530)
